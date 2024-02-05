@@ -1,6 +1,6 @@
 # Today I Learned
 
-Small facts app
+Small facts app that displays the list of facts in various categories and allows to add the new ones.
 
 ## Features
 
