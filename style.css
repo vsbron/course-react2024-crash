@@ -12,23 +12,25 @@ html {
 
 body {
   box-sizing: border-box;
+  font: 16px/1.4 Sono, sans-serif;
 }
 
 h1 {
   font-size: 4.2rem;
   text-transform: uppercase;
   text-align: center;
+  font-family: Coiny;
 }
 
-p {
+.fact {
   font-size: 2rem;
   line-height: 1.4;
-  font-family: sans-serif;
 }
 
-span {
+.tag {
   text-transform: uppercase;
   font-size: 14px;
+  font-family: Coiny;
 }
 
 ul {
