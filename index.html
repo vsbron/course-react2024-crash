@@ -24,7 +24,7 @@
           />
           <h1>Today I Learned</h1>
         </div>
-        <button>Share a fact</button>
+        <button class="btn btn--large">Share a fact</button>
       </header>
 
       <form class="fact-form">
@@ -42,21 +42,53 @@
           <option value="history">History</option>
           <option value="news">News</option>
         </select>
-        <button>Post</button>
+        <button class="btn btn--large">Post</button>
       </form>
 
       <main class="main">
         <aside>
           <ul>
-            <li><button>All</button></li>
-            <li><button>Technology</button></li>
-            <li><button>Science</button></li>
-            <li><button>Finance</button></li>
-            <li><button>Society</button></li>
-            <li><button>Entertainment</button></li>
-            <li><button>Health</button></li>
-            <li><button>History</button></li>
-            <li><button>News</button></li>
+            <li><button class="btn btn--all-categories">All</button></li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #3b82f6">
+                Technology
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #16a34a">
+                Science
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #ef4444">
+                Finance
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #eab308">
+                Society
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #db2777">
+                Entertainment
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #14b8a6">
+                Health
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #f97316">
+                History
+              </button>
+            </li>
+            <li class="category">
+              <button class="btn btn--category" style="background: #8b5cf6">
+                News
+              </button>
+            </li>
           </ul>
         </aside>
         <section>
@@ -64,15 +96,18 @@
             <li class="fact">
               <p>
                 React is being developed by Meta (formerly facebook)
-                <a href="https://opensource.fb.com/" target="_blank"
+                <a
+                  href="https://opensource.fb.com/"
+                  class="source"
+                  target="_blank"
                   >(Source)</a
                 >
               </p>
               <span class="tag" style="background: #3b82f6">#Technology#</span>
               <div class="vote-buttons">
-                <button>👍 <strong>24</strong></button>
-                <button>🤯 <strong>9</strong></button>
-                <button>⛔ <strong>4</strong></button>
+                <button>👍 24</button>
+                <button>🤯 9</button>
+                <button>⛔ 4</button>
               </div>
             </li>
 
@@ -83,30 +118,34 @@
                 changed a diaper. Today, that number is down to 3%
                 <a
                   href="https://www.mother.ly/parenting/millennial-dads-spend-more-time-with-their-kids"
+                  class="source"
                   target="_blank"
                   >(Source)</a
                 >
               </p>
               <span class="tag" style="background: #eab308">#society#</span>
               <div class="vote-buttons">
-                <button>👍 <strong>15</strong></button>
-                <button>🤯 <strong>8</strong></button>
-                <button>⛔ <strong>2</strong></button>
+                <button>👍 15</button>
+                <button>🤯 8</button>
+                <button>⛔ 2</button>
               </div>
             </li>
 
             <li class="fact">
               <p>
                 Lisbon is the capital of Portugal
-                <a href="https://en.wikipedia.org/wiki/Lisbon" target="_blank"
+                <a
+                  href="https://en.wikipedia.org/wiki/Lisbon"
+                  class="source"
+                  target="_blank"
                   >(Source)</a
                 >
               </p>
               <span class="tag" style="background: #eab308">#society#</span>
               <div class="vote-buttons">
-                <button>👍 <strong>12</strong></button>
-                <button>🤯 <strong>2</strong></button>
-                <button>⛔ <strong>0</strong></button>
+                <button>👍 12</button>
+                <button>🤯 2</button>
+                <button>⛔ 0</button>
               </div>
             </li>
           </ul>

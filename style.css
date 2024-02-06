@@ -12,7 +12,7 @@ html {
 
 body {
   box-sizing: border-box;
-  font: 16px/1.4 Sono, sans-serif;
+  font: 400 16px/1.4 Sono, sans-serif;
   background: #292524;
   color: #fafaf9;
   padding: 4.8rem 6.4rem;
@@ -62,6 +62,10 @@ h1 {
   gap: 4.8rem;
 }
 
+.category {
+  margin-bottom: 16px;
+}
+
 .fact {
   font-size: 2rem;
   line-height: 1.4;
@@ -80,12 +84,85 @@ h1 {
   font-size: 14px;
   font-family: Coiny;
   padding: 3px 10px 0;
+  border-radius: 100px;
 }
 
 .vote-buttons {
   margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.vote-buttons button {
+  background: #78716c;
+  color: inherit;
+
+  padding: 6px 12px;
+  border: none;
+  border-radius: 100px;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.vote-buttons button:hover {
+  background: #292524;
 }
 
 ul {
   list-style: none;
+}
+
+.source:link,
+.source:visited {
+  color: #a8a29e;
+  text-decoration: none;
+  margin-left: 12px;
+  transition: color 0.3s ease;
+}
+
+.source:hover,
+.source:active {
+  color: #3b82f6;
+}
+
+.btn {
+  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  color: inherit;
+
+  padding: 16px 0 13px;
+  border: none;
+  border-radius: 100rem;
+
+  font-family: Coiny;
+  font-size: 17px;
+  line-height: 1;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1) rotate(-2deg);
+}
+
+.btn--large {
+  font-size: 2rem;
+  padding: 2rem 3.2rem 1.7rem;
+}
+
+.btn--all-categories {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.btn--category {
+  width: 100%;
+  background: none;
 }
