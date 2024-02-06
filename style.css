@@ -15,7 +15,12 @@ body {
   font: 16px/1.4 Sono, sans-serif;
   background: #292524;
   color: #fafaf9;
-  padding: 4rem;
+  padding: 4.8rem 6.4rem;
+}
+
+.container {
+  max-width: 150rem;
+  margin: 0 auto;
 }
 
 .header {
@@ -29,6 +34,11 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.logo img {
+  width: 68px;
+  height: 68px;
 }
 
 h1 {
