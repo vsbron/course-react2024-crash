@@ -46,6 +46,12 @@ h1 {
   text-align: center;
 }
 
+.main {
+  display: grid;
+  grid-template-columns: 25rem 1fr;
+  gap: 4.8rem;
+}
+
 .fact {
   font-size: 2rem;
   line-height: 1.4;
