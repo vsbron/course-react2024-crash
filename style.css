@@ -20,12 +20,23 @@ body {
 
 .header {
   margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 h1 {
   font-size: 4.2rem;
+  line-height: 1;
   text-transform: uppercase;
   font-family: Coiny;
+  margin-top: 7px;
 }
 
 .fact-form {
@@ -41,6 +52,11 @@ h1 {
   background-color: #44403c;
   margin-bottom: 16px;
   padding: 16px 2.4rem;
+  letter-spacing: -1px;
+
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
 }
 
 .tag {
@@ -48,6 +64,10 @@ h1 {
   font-size: 14px;
   font-family: Coiny;
   padding: 3px 10px 0;
+}
+
+.vote-buttons {
+  margin-left: auto;
 }
 
 ul {
