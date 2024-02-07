@@ -4,7 +4,7 @@ Small facts app that displays the list of facts in various categories and allows
 
 ## Features
 
-- ;
+- Random facts list with source link and some reactions;
 
 ## Details
 
