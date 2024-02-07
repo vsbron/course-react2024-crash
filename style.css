@@ -20,6 +20,12 @@ body {
   padding: 4.8rem 6.4rem;
 }
 
+@media screen and (max-width: 1199px) {
+  body {
+    padding: 3.2rem 4.8rem;
+  }
+}
+
 ul {
   list-style: none;
 }
@@ -63,6 +69,12 @@ h1 {
   gap: 4.8rem;
 }
 
+@media screen and (max-width: 991px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
 .category {
   margin-bottom: 16px;
 }
@@ -81,6 +93,14 @@ h1 {
   display: flex;
   align-items: center;
   gap: 2.4rem;
+}
+
+@media screen and (max-width: 1199px) {
+  .fact {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
 }
 
 .tag {
@@ -183,6 +203,13 @@ h1 {
   border-radius: 16px;
 }
 
+@media screen and (max-width: 1199px) {
+  .fact-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
 .fact-form input,
 .fact-form select {
   background: #78716c;
@@ -199,6 +226,13 @@ h1 {
   outline: none;
 }
 
+@media screen and (max-width: 1199px) {
+  .fact-form input,
+  .fact-form select {
+    width: auto;
+  }
+}
+
 .fact-form input:first-child {
   flex-grow: 1;
 }
@@ -211,4 +245,7 @@ h1 {
   font-size: 18px;
   font-weight: 600;
   margin-right: 18px;
+}
+
+@media screen and (max-width: 1199px) {
 }
