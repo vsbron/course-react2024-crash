@@ -40,6 +40,31 @@ const factsList = document.querySelector(".facts-list");
 // Render facts to the list
 factsList.innerHTML = "";
 
+// Load data from Supabase
+async function loadFacts() {
+  // Fetching the data
+  const res = await fetch(
+    "https://tzmuxqwkqlgqxnqbljuh.supabase.co/rest/v1/facts",
+    {
+      headers: {
+        apikey:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6bXV4cXdrcWxncXhucWJsanVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDczMDM1NDcsImV4cCI6MjAyMjg3OTU0N30.jlG-_TG5_AC-iILfAY56itr-Z3nug000fN9a_UPXla4",
+        authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR6bXV4cXdrcWxncXhucWJsanVoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDczMDM1NDcsImV4cCI6MjAyMjg3OTU0N30.jlG-_TG5_AC-iILfAY56itr-Z3nug000fN9a_UPXla4",
+      },
+    }
+  );
+
+  // Converting data to String
+  const data = await res.json();
+
+  // Creating the list in the HTML
+  createFactsList(data);
+}
+
+// Calling the async function
+loadFacts();
+
 // Creating the function that creats initial facts list
 function createFactsList(data) {
   // Formatting the fact into HTML
@@ -63,9 +88,6 @@ function createFactsList(data) {
   // Placing inside HTML
   factsList.insertAdjacentHTML("afterbegin", html);
 }
-
-// Calling the function with initial data
-createFactsList(initialFacts);
 
 // Form visibility toggle
 btn.addEventListener("click", () => {

@@ -8,6 +8,7 @@ Small facts app that displays the list of facts in various categories and allows
 
 ## Details
 
+- Facts are loaded from the Supabase database;
 - CSS is written by Vanilla CSS;
 - Added responsive support up to 550px;
 
