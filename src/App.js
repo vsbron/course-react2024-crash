@@ -1,6 +1,6 @@
-import CategoryFilter from "./Components/CategoryFilter";
-import FactList from "./Components/FactList";
-import NewFactForm from "./Components/NewFactForm";
+import CategoryFilter from "./components/CategoryFilter";
+import FactList from "./components/FactList";
+import NewFactForm from "./components/NewFactForm";
 
 import "./style.css";
 
