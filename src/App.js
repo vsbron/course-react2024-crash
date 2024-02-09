@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import CategoryFilter from "./components/CategoryFilter";
 import FactList from "./components/FactList";
 import NewFactForm from "./components/NewFactForm";
@@ -5,6 +7,14 @@ import NewFactForm from "./components/NewFactForm";
 import "./style.css";
 
 function App() {
+  // State for form visibility
+  const [showForm, setShowForm] = useState(false);
+
+  // Show form click handler
+  function handleClick() {
+    setShowForm((show) => !show);
+  }
+
   return (
     <>
       <header className="header">
@@ -17,9 +27,12 @@ function App() {
           />
           <h1>Today I Learned</h1>
         </div>
-        <button className="btn btn--large btn--open">Share a fact</button>
+        <button className="btn btn--large btn--open" onClick={handleClick}>
+          Share a fact
+        </button>
       </header>
-      <NewFactForm />
+
+      {showForm && <NewFactForm />}
       <main className="main">
         <CategoryFilter />
         <FactList />
