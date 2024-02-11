@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CATEGORIES } from "../utils/constants";
 
-function NewFactForm() {
+function NewFactForm({ setFacts }) {
   // Creating states for controlled form elements
   const [text, setText] = useState("");
   const [source, setSource] = useState("https://example.com");
@@ -12,10 +12,10 @@ function NewFactForm() {
   const textLength = maxLength - text.length;
 
   // Function for validating URL (Not good, needs replacement)
-  function isValidUrl(string){
+  function isValidUrl(string) {
     let url;
     try {
-      url = new URL(string)
+      url = new URL(string);
     } catch (_) {
       return;
     }
@@ -28,20 +28,22 @@ function NewFactForm() {
     e.preventDefault();
 
     // 2) Check if data is valid. If so create a new Fact
-    if(!text || !isValidUrl(source) || !category) return;
+    if (!text || !isValidUrl(source) || !category) return;
 
     // 3) Create a new Fact Object
     const newFact = {
-      id: Math.round(Math.random()*1000000),
+      id: Math.round(Math.random() * 1000000),
       text,
       source,
       category,
       votesInteresting: 0,
       votesMindBlowing: 0,
       votesFalse: 0,
-      createdIn: new Date().getCurrentYear(),
-    }
+      createdIn: new Date().getFullYear(),
+    };
 
+    // 4) Add the new fact to the UI: add the fact to state
+    setFacts((facts) => [newFact, ...facts]);
   }
 
   return (
