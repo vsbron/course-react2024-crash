@@ -30,6 +30,18 @@ function NewFactForm() {
     // 2) Check if data is valid. If so create a new Fact
     if(!text || !isValidUrl(source) || !category) return;
 
+    // 3) Create a new Fact Object
+    const newFact = {
+      id: Math.round(Math.random()*1000000),
+      text,
+      source,
+      category,
+      votesInteresting: 0,
+      votesMindBlowing: 0,
+      votesFalse: 0,
+      createdIn: new Date().getCurrentYear(),
+    }
+
   }
 
   return (
