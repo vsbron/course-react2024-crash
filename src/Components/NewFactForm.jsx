@@ -4,17 +4,32 @@ import { CATEGORIES } from "../utils/constants";
 function NewFactForm() {
   // Creating states for controlled form elements
   const [text, setText] = useState("");
-  const [source, setSource] = useState("");
+  const [source, setSource] = useState("https://example.com");
   const [category, setCategory] = useState("");
 
   // Variables for fact's maximum length counter
   const maxLength = 200;
   const textLength = maxLength - text.length;
 
+  // Function for validating URL (Not good, needs replacement)
+  function isValidUrl(string){
+    let url;
+    try {
+      url = new URL(string)
+    } catch (_) {
+      return;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+  }
+
   // Form submit handler
   function handleSubmit(e) {
+    // 1) Prevent browser reload
     e.preventDefault();
-    console.log(text, source, category);
+
+    // 2) Check if data is valid. If so create a new Fact
+    if(!text || !isValidUrl(source) || !category) return;
+
   }
 
   return (
