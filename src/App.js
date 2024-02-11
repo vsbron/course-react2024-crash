@@ -49,7 +49,9 @@ function App() {
   return (
     <>
       <Header setShowForm={setShowForm} showForm={showForm} />
-      {showForm && <NewFactForm setFacts={setFacts} />}
+      {showForm && (
+        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
+      )}
       <main className="main">
         <CategoryFilter />
         <FactList facts={facts} />

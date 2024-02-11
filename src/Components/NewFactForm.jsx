@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CATEGORIES } from "../utils/constants";
 
-function NewFactForm({ setFacts }) {
+function NewFactForm({ setFacts, setShowForm }) {
   // Creating states for controlled form elements
   const [text, setText] = useState("");
   const [source, setSource] = useState("https://example.com");
@@ -19,7 +19,15 @@ function NewFactForm({ setFacts }) {
     } catch (_) {
       return;
     }
+
     return url.protocol === "http:" || url.protocol === "https:";
+  }
+
+  // Helper function to reset the form
+  function resetForm() {
+    setText("");
+    setSource("https://example.com");
+    setCategory("");
   }
 
   // Form submit handler
@@ -44,6 +52,12 @@ function NewFactForm({ setFacts }) {
 
     // 4) Add the new fact to the UI: add the fact to state
     setFacts((facts) => [newFact, ...facts]);
+
+    // 5) Reset input fields
+    resetForm();
+
+    // 6) Close the form
+    setShowForm(false);
   }
 
   return (
