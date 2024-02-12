@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import CategoryFilter from "./components/CategoryFilter";
-import FactList from "./components/FactList";
-import NewFactForm from "./components/NewFactForm";
+import CategoryFilter from "./comps/CategoryFilter";
+import FactList from "./comps/FactList";
+import Header from "./comps/Header";
+import NewFactForm from "./comps/NewFactForm";
 
 import "./style.css";
-import Header from "./components/Header";
 
 const initialFacts = [
   {
