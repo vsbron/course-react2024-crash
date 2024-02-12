@@ -1,9 +1,11 @@
 import { useState } from "react";
 
-import CategoryFilter from "./comps/CategoryFilter";
-import FactList from "./comps/FactList";
-import Header from "./comps/Header";
-import NewFactForm from "./comps/NewFactForm";
+import supabase from "./supabase";
+
+import CategoryFilter from "./components/CategoryFilter";
+import FactList from "./components/FactList";
+import Header from "./components/Header";
+import NewFactForm from "./components/NewFactForm";
 
 import "./style.css";
 

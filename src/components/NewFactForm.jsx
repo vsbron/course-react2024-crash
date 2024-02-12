@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import { CATEGORIES } from "../utils/constants";
 
 function NewFactForm({ setFacts, setShowForm }) {
