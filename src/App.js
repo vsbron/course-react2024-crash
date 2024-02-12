@@ -12,10 +12,11 @@ import Loader from "./ui/Loader";
 import "./style.css";
 
 function App() {
-  // Creating state for form visibility, fact list and loading state
+  // Creating state for form visibility, fact list, loading state and chosen category
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState("all");
 
   // Use effect hook that loads the initial facts
   useEffect(() => {
@@ -23,8 +24,11 @@ function App() {
       // Enabling Loading state
       setIsLoading(true);
 
-      // Getting the data
-      let { data: facts, error } = await supabase.from("facts").select("*");
+      // setting the query based on the filter and getting the data
+      let query = supabase.from("facts").select("*");
+      if (currentCategory !== "all")
+        query = query.eq("category", currentCategory);
+      let { data: facts, error } = await query;
 
       // Updating the Facts in the state if there's no Errors
       if (!error) setFacts(facts);
@@ -35,7 +39,7 @@ function App() {
     }
 
     getFacts();
-  }, []);
+  }, [currentCategory]);
 
   return (
     <>
@@ -44,7 +48,7 @@ function App() {
         <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
       )}
       <main className="main">
-        <CategoryFilter />
+        <CategoryFilter setCurrentCategory={setCurrentCategory} />
         {isLoading ? <Loader /> : <FactList facts={facts} />}
       </main>
     </>
