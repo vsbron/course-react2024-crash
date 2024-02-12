@@ -6,7 +6,7 @@ Small facts app that displays the list of facts in various categories and allows
 
 - Random facts list with source link and some reactions;
 - Facts can be filtered out using the Categories buttons;
-- "Share a Fact" button, that reveals the hidden form;
+- New fact can be added to the Facts list using the Form under the "Share a Fact" button;
 
 ## Details
 

@@ -1,12 +1,14 @@
 import { useState } from "react";
 
 import { CATEGORIES } from "../utils/constants";
+import supabase from "../services/supabase";
 
 function NewFactForm({ setFacts, setShowForm }) {
-  // Creating states for controlled form elements
+  // Creating states for controlled form elements and Uploading state
   const [text, setText] = useState("");
   const [source, setSource] = useState("https://example.com");
   const [category, setCategory] = useState("");
+  const [isUploading, setIsUploading] = useState("");
 
   // Variables for fact's maximum length counter
   const maxLength = 200;
@@ -20,7 +22,6 @@ function NewFactForm({ setFacts, setShowForm }) {
     } catch (_) {
       return;
     }
-
     return url.protocol === "http:" || url.protocol === "https:";
   }
 
@@ -32,33 +33,36 @@ function NewFactForm({ setFacts, setShowForm }) {
   }
 
   // Form submit handler
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
+    // Enabling Uploading state
+    setIsUploading(true);
+
     // 1) Prevent browser reload
     e.preventDefault();
 
     // 2) Check if data is valid. If so create a new Fact
     if (!text || !isValidUrl(source) || !category) return;
 
-    // 3) Create a new Fact Object
-    const newFact = {
-      id: Math.round(Math.random() * 1000000),
-      text,
-      source,
-      category,
-      votesInteresting: 0,
-      votesMindBlowing: 0,
-      votesFalse: 0,
-      createdIn: new Date().getFullYear(),
-    };
+    // 3) Upload the fact to supabase and receive the new Fact obj
+    const { data: newFact, error } = await supabase
+      .from("facts")
+      .insert([{ text, source, category }])
+      .select();
+
+    // Return if there's an error
+    if (error) return;
 
     // 4) Add the new fact to the UI: add the fact to state
-    setFacts((facts) => [newFact, ...facts]);
+    setFacts((facts) => [newFact[0], ...facts]);
 
     // 5) Reset input fields
     resetForm();
 
     // 6) Close the form
     setShowForm(false);
+
+    // Disabling Uploading state
+    setIsUploading(false);
   }
 
   return (
@@ -69,6 +73,7 @@ function NewFactForm({ setFacts, setShowForm }) {
         value={text}
         onChange={(e) => setText(e.target.value)}
         maxLength={maxLength}
+        disabled={isUploading}
       />
       <span>{textLength}</span>
 
@@ -77,9 +82,14 @@ function NewFactForm({ setFacts, setShowForm }) {
         placeholder="Trustworthy source..."
         value={source}
         onChange={(e) => setSource(e.target.value)}
+        disabled={isUploading}
       />
 
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        disabled={isUploading}
+      >
         <option value="">Choose category:</option>
         {CATEGORIES.map((cat) => (
           <option key={cat.name} value={cat.name}>
@@ -87,7 +97,9 @@ function NewFactForm({ setFacts, setShowForm }) {
           </option>
         ))}
       </select>
-      <button className="btn btn--large">Post</button>
+      <button className="btn btn--large" disabled={isUploading}>
+        Post
+      </button>
     </form>
   );
 }
