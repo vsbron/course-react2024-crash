@@ -8,6 +8,7 @@ Small facts app that displays the list of facts in various categories and allows
 - Facts can be filtered out using the Categories buttons;
 - New fact can be added to the Facts list using the Form under the "Share a Fact" button;
 - User can vote on each fact with the Votes Buttons;
+- If facts' majority of votes are "False" it gets the "Disputed" tag added;
 
 ## Details
 

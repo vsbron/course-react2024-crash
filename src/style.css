@@ -42,6 +42,12 @@ ul {
   margin-top: 24px;
 }
 
+.disputed {
+  color: #ef4444;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
 /* ELEMENTS */
 
 #root {

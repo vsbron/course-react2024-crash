@@ -15,6 +15,9 @@ function Fact({ fact, setFacts }) {
   // State variable for the Updating state;
   const [isUpdating, setIsUpdating] = useState(false);
 
+  // Declaring thwether the fact has more false votes than others
+  const isDisputed = votesFalse >= votesInteresting + votesMindblowing;
+
   // Votes click handler
   async function handleVote(columnName) {
     // Enabling Updating state
@@ -40,6 +43,7 @@ function Fact({ fact, setFacts }) {
   return (
     <li className="fact">
       <p>
+        {isDisputed && <span className="disputed">[⛔ DISPUTED]</span>}
         {text}
         <a
           href={`${source}`}
