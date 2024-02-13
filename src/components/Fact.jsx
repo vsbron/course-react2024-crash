@@ -1,6 +1,7 @@
+import supabase from "../services/supabase";
 import { CATEGORIES } from "../utils/constants";
 
-function Fact({ fact }) {
+function Fact({ fact, setFacts }) {
   const {
     text,
     source,
@@ -9,6 +10,22 @@ function Fact({ fact }) {
     votesMindblowing,
     votesFalse,
   } = fact;
+
+  // Votes click handler
+  async function handleVote(e) {
+    // Updating the DB
+    const { data: updatedFact, error } = await supabase
+      .from("facts")
+      .update({ votesInteresting: votesInteresting + 1 })
+      .eq("id", fact.id)
+      .select();
+
+    // If no error, updating the list on the page
+    if (!error)
+      setFacts((facts) =>
+        facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
+      );
+  }
 
   return (
     <li className="fact">
@@ -33,7 +50,7 @@ function Fact({ fact }) {
         {category}
       </span>
       <div className="vote-buttons">
-        <button>👍 {votesInteresting}</button>
+        <button onClick={handleVote}>👍 {votesInteresting}</button>
         <button>🤯 {votesMindblowing}</button>
         <button>⛔ {votesFalse}</button>
       </div>

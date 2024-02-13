@@ -49,7 +49,7 @@ function NewFactForm({ setFacts, setShowForm }) {
       .insert([{ text, source, category }])
       .select();
 
-    // Return if there's an error
+    // Guard clause
     if (error) return;
 
     // 4) Add the new fact to the UI: add the fact to state

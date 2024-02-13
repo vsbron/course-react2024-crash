@@ -1,6 +1,6 @@
 import Fact from "./Fact";
 
-function FactList({ facts }) {
+function FactList({ facts, setFacts }) {
   // Early return if there's no facts
   if (facts.length === 0)
     return (
@@ -13,7 +13,7 @@ function FactList({ facts }) {
     <section>
       <ul>
         {facts.map((fact) => (
-          <Fact fact={fact} key={fact.id} />
+          <Fact fact={fact} key={fact.id} setFacts={setFacts} />
         ))}
       </ul>
       <p>
