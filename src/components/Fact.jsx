@@ -16,14 +16,14 @@ function Fact({ fact, setFacts }) {
   const [isUpdating, setIsUpdating] = useState(false);
 
   // Votes click handler
-  async function handleVote(e) {
+  async function handleVote(columnName) {
     // Enabling Updating state
     setIsUpdating(true);
 
     // Updating the DB
     const { data: updatedFact, error } = await supabase
       .from("facts")
-      .update({ votesInteresting: votesInteresting + 1 })
+      .update({ [columnName]: fact[columnName] + 1 })
       .eq("id", fact.id)
       .select();
 
@@ -60,11 +60,21 @@ function Fact({ fact, setFacts }) {
         {category}
       </span>
       <div className="vote-buttons">
-        <button onClick={handleVote} disabled={isUpdating}>
+        <button
+          onClick={() => handleVote("votesInteresting")}
+          disabled={isUpdating}
+        >
           👍 {votesInteresting}
         </button>
-        <button>🤯 {votesMindblowing}</button>
-        <button>⛔ {votesFalse}</button>
+        <button
+          onClick={() => handleVote("votesMindblowing")}
+          disabled={isUpdating}
+        >
+          🤯 {votesMindblowing}
+        </button>
+        <button onClick={() => handleVote("votesFalse")} disabled={isUpdating}>
+          ⛔ {votesFalse}
+        </button>
       </div>
     </li>
   );
