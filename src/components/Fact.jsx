@@ -1,3 +1,4 @@
+import { useState } from "react";
 import supabase from "../services/supabase";
 import { CATEGORIES } from "../utils/constants";
 
@@ -11,8 +12,14 @@ function Fact({ fact, setFacts }) {
     votesFalse,
   } = fact;
 
+  // State variable for the Updating state;
+  const [isUpdating, setIsUpdating] = useState(false);
+
   // Votes click handler
   async function handleVote(e) {
+    // Enabling Updating state
+    setIsUpdating(true);
+
     // Updating the DB
     const { data: updatedFact, error } = await supabase
       .from("facts")
@@ -25,6 +32,9 @@ function Fact({ fact, setFacts }) {
       setFacts((facts) =>
         facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
       );
+
+    // Disabling Updating state
+    setIsUpdating(false);
   }
 
   return (
@@ -50,7 +60,9 @@ function Fact({ fact, setFacts }) {
         {category}
       </span>
       <div className="vote-buttons">
-        <button onClick={handleVote}>👍 {votesInteresting}</button>
+        <button onClick={handleVote} disabled={isUpdating}>
+          👍 {votesInteresting}
+        </button>
         <button>🤯 {votesMindblowing}</button>
         <button>⛔ {votesFalse}</button>
       </div>
