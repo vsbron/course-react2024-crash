@@ -9,7 +9,7 @@ export function useFacts() {
 
   //// FILTERING
   // Getting the filtered value from the search params
-  const currentCategory = searchParams.get("category");
+  const currentCategory = searchParams.get("category") || "all";
 
   //// QUERY
   const {
