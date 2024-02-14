@@ -6,6 +6,9 @@ export async function getFacts({ currentCategory }) {
   let query = supabase.from("facts").select("*");
   if (currentCategory !== "all") query = query.eq("category", currentCategory);
 
+  // Sorting the data by date, from new to old
+  query.order("created_at", { ascending: false });
+
   // Getting the data from query
   let { data: facts, error } = await query;
 
