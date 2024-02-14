@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import supabase from "./services/supabase";
 
@@ -12,6 +14,16 @@ import Loader from "./ui/Loader";
 import "./style.css";
 
 function App() {
+  // Creating the query client with the options for React Query
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        // staleTime: 60 * 1000, // Time until the state becomes stale (ms)
+        staleTime: 0,
+      },
+    },
+  });
+
   // Creating state for form visibility, fact list, loading state and chosen category
   const [showForm, setShowForm] = useState(false);
   const [facts, setFacts] = useState([]);
@@ -42,20 +54,22 @@ function App() {
   }, [currentCategory]);
 
   return (
-    <>
-      <Header setShowForm={setShowForm} showForm={showForm} />
-      {showForm && (
-        <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
-      )}
-      <main className="main">
-        <CategoryFilter setCurrentCategory={setCurrentCategory} />
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <FactList facts={facts} setFacts={setFacts} />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <Header setShowForm={setShowForm} showForm={showForm} />
+        {showForm && (
+          <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
         )}
-      </main>
-    </>
+        <main className="main">
+          <CategoryFilter />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <FactList facts={facts} setFacts={setFacts} />
+          )}
+        </main>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

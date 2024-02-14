@@ -1,13 +1,27 @@
+import { useSearchParams } from "react-router-dom";
+
 import { CATEGORIES } from "../utils/constants";
 
-function CategoryFilter({ setCurrentCategory }) {
+function CategoryFilter() {
+  // Getting the reference and setter for URL state
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // Category click handler that filters out the facts
+  function handleClick(value) {
+    // Adding the filter data to the searchParams
+    searchParams.set("category", value);
+
+    // Updating the URL
+    setSearchParams(searchParams);
+  }
+
   return (
     <aside>
       <ul>
         <li>
           <button
             className="btn btn--all-categories"
-            onClick={() => setCurrentCategory("all")}
+            onClick={() => handleClick("all")}
           >
             All
           </button>
@@ -17,7 +31,7 @@ function CategoryFilter({ setCurrentCategory }) {
             <button
               className="btn btn--category"
               style={{ backgroundColor: cat.color }}
-              onClick={() => setCurrentCategory(cat.name)}
+              onClick={() => handleClick(cat.name)}
             >
               {cat.name}
             </button>
