@@ -7,7 +7,7 @@ export function useVote() {
   const queryClient = useQueryClient();
 
   // Add a vote
-  // Getting isLoading state and mutate function from useMutation hook
+  // Getting isPending state and mutate function from useMutation hook
   const { isPending: isVoting, mutate: addVote } = useMutation({
     mutationFn: ({ columnName, newValue, id }) =>
       registerVote(columnName, newValue, id),

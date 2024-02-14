@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import NewFactForm from "./components/NewFactForm";
 
 import "./style.css";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 function App() {
   // Creating the query client with the options for React Query
@@ -20,20 +21,19 @@ function App() {
     },
   });
 
-  // Creating state for form visibility, fact list, loading state and chosen category
+  // Creating state for form visibility
   const [showForm, setShowForm] = useState(false);
-  const [setFacts] = useState([]);
 
   return (
     <QueryClientProvider client={queryClient}>
+      {/* Enabling the DevTools for React Query */}
+      <ReactQueryDevtools initialIsOpen={false} />
       <BrowserRouter>
         <Header setShowForm={setShowForm} showForm={showForm} />
-        {showForm && (
-          <NewFactForm setFacts={setFacts} setShowForm={setShowForm} />
-        )}
+        {<NewFactForm setShowForm={setShowForm} />}
         <main className="main">
           <CategoryFilter />
-          <FactList setFacts={setFacts} />
+          <FactList />
         </main>
       </BrowserRouter>
     </QueryClientProvider>

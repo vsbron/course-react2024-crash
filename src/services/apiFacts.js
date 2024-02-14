@@ -21,6 +21,22 @@ export async function getFacts({ currentCategory }) {
   return { facts };
 }
 
+// Function to add a new fact
+export async function addFact(text, source, category) {
+  const { data, error } = await supabase
+    .from("facts")
+    .insert([{ text, source, category }])
+    .select();
+
+  // If Error, throw an error message
+  if (error) {
+    console.error(error);
+    throw new Error("Could not add a new Fact");
+  }
+
+  return data;
+}
+
 // Function to update the votes number
 export async function registerVote(columnName, newValue, id) {
   const { data, error } = await supabase
@@ -28,7 +44,8 @@ export async function registerVote(columnName, newValue, id) {
     .update({ [columnName]: newValue })
     .eq("id", id)
     .select();
-  // If no error, updating the list on the page
+
+  // If Error, throw an error message
   if (error) {
     console.error(error);
     throw new Error("Vote could not be registered");
