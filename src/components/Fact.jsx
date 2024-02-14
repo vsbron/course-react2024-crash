@@ -30,11 +30,11 @@ function Fact({ fact, setFacts }) {
       .eq("id", fact.id)
       .select();
 
-    // If no error, updating the list on the page
-    if (!error)
-      setFacts((facts) =>
-        facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
-      );
+    // // If no error, updating the list on the page
+    // if (!error)
+    //   setFacts((facts) =>
+    //     facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
+    //   );
 
     // Disabling Updating state
     setIsUpdating(false);
