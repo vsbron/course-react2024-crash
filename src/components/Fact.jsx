@@ -1,9 +1,9 @@
-import { useState } from "react";
-import supabase from "../services/supabase";
 import { CATEGORIES } from "../utils/constants";
+import { useVote } from "../hooks/useVote";
 
-function Fact({ fact, setFacts }) {
+function Fact({ fact }) {
   const {
+    id,
     text,
     source,
     category,
@@ -12,32 +12,19 @@ function Fact({ fact, setFacts }) {
     votesFalse,
   } = fact;
 
-  // State variable for the Updating state;
-  const [isUpdating, setIsUpdating] = useState(false);
-
-  // Declaring thwether the fact has more false votes than others
+  // Declaring whether the fact has more false votes than others
   const isDisputed = votesFalse >= votesInteresting + votesMindblowing;
 
-  // Votes click handler
-  async function handleVote(columnName) {
-    // Enabling Updating state
-    setIsUpdating(true);
+  // Getting the mutation function and isVoting status from custom hook
+  const { isVoting, addVote } = useVote();
 
-    // Updating the DB
-    const { data: updatedFact, error } = await supabase
-      .from("facts")
-      .update({ [columnName]: fact[columnName] + 1 })
-      .eq("id", fact.id)
-      .select();
+  // Vote handler
+  function handleVote(e) {
+    // Getting the current value of votes
+    const newValue = Number(e.target.innerHTML.replace(/\D+/g, "")) + 1;
 
-    // // If no error, updating the list on the page
-    // if (!error)
-    //   setFacts((facts) =>
-    //     facts.map((f) => (f.id === fact.id ? updatedFact[0] : f))
-    //   );
-
-    // Disabling Updating state
-    setIsUpdating(false);
+    // Calling the mutation function
+    addVote({ columnName: e.target.name, newValue, id });
   }
 
   return (
@@ -65,18 +52,20 @@ function Fact({ fact, setFacts }) {
       </span>
       <div className="vote-buttons">
         <button
-          onClick={() => handleVote("votesInteresting")}
-          disabled={isUpdating}
+          onClick={handleVote}
+          disabled={isVoting}
+          name="votesInteresting"
         >
           👍 {votesInteresting}
         </button>
         <button
-          onClick={() => handleVote("votesMindblowing")}
-          disabled={isUpdating}
+          onClick={handleVote}
+          disabled={isVoting}
+          name="votesMindblowing"
         >
           🤯 {votesMindblowing}
         </button>
-        <button onClick={() => handleVote("votesFalse")} disabled={isUpdating}>
+        <button onClick={handleVote} disabled={isVoting} name="votesFalse">
           ⛔ {votesFalse}
         </button>
       </div>

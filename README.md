@@ -13,7 +13,7 @@ Small facts app that displays the list of facts in various categories and allows
 ## Details
 
 - Facts are loaded from the Supabase database;
-- Facts are listed using React Query;
+- Facts are listed and updated using React Query;
 - Facts filtering is written using URL State;
 - CSS is written by Vanilla CSS;
 - Added responsive support up to 550px;

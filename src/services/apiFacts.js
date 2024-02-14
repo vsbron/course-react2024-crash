@@ -17,3 +17,19 @@ export async function getFacts({ currentCategory }) {
 
   return { facts };
 }
+
+// Function to update the votes number
+export async function registerVote(columnName, newValue, id) {
+  const { data, error } = await supabase
+    .from("facts")
+    .update({ [columnName]: newValue })
+    .eq("id", id)
+    .select();
+  // If no error, updating the list on the page
+  if (error) {
+    console.error(error);
+    throw new Error("Vote could not be registered");
+  }
+
+  return data;
+}
