@@ -148,6 +148,7 @@ h1 {
   margin-left: auto;
   flex-shrink: 0;
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -165,6 +166,18 @@ h1 {
 
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.vote-buttons button.btn--small {
+  font-size: 15px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-weight: 400;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .vote-buttons button:hover {

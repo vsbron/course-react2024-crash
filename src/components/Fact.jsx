@@ -1,5 +1,6 @@
 import { CATEGORIES } from "../utils/constants";
 import { useVote } from "../hooks/useVote";
+import { useDeleteFact } from "../hooks/useDeleteFact";
 
 function Fact({ fact }) {
   const {
@@ -17,8 +18,12 @@ function Fact({ fact }) {
     (votesInteresting || votesMindblowing || votesFalse) &&
     votesFalse >= votesInteresting + votesMindblowing;
 
-  // Getting the mutation function and isVoting status from custom hook
+  // Getting the mutation functions and isVoting / isDeleting statuses from custom hooks
   const { isVoting, addVote } = useVote();
+  const { isDeleting, deleteFact } = useDeleteFact();
+
+  // Combining two pending statuses
+  const isBusy = isDeleting || isVoting;
 
   // Vote handler
   function handleVote(e) {
@@ -53,22 +58,21 @@ function Fact({ fact }) {
         {category}
       </span>
       <div className="vote-buttons">
-        <button
-          onClick={handleVote}
-          disabled={isVoting}
-          name="votesInteresting"
-        >
+        <button onClick={handleVote} disabled={isBusy} name="votesInteresting">
           👍 {votesInteresting}
         </button>
-        <button
-          onClick={handleVote}
-          disabled={isVoting}
-          name="votesMindblowing"
-        >
+        <button onClick={handleVote} disabled={isBusy} name="votesMindblowing">
           🤯 {votesMindblowing}
         </button>
-        <button onClick={handleVote} disabled={isVoting} name="votesFalse">
+        <button onClick={handleVote} disabled={isBusy} name="votesFalse">
           ⛔ {votesFalse}
+        </button>
+        <button
+          className="btn--small"
+          onClick={() => deleteFact(id)}
+          disabled={isBusy}
+        >
+          X
         </button>
       </div>
     </li>

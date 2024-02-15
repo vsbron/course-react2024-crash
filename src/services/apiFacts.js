@@ -37,6 +37,19 @@ export async function addFact(text, source, category) {
   return data;
 }
 
+// Function to delete the fact
+export async function deleteFact(id) {
+  const { data, error } = await supabase.from("facts").delete().eq("id", id);
+
+  // If Error, throw an error message
+  if (error) {
+    console.error(error);
+    throw new Error("Fact could not be deleted");
+  }
+
+  return data;
+}
+
 // Function to update the votes number
 export async function registerVote(columnName, newValue, id) {
   const { data, error } = await supabase
