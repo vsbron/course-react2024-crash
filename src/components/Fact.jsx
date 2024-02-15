@@ -1,6 +1,7 @@
 import { CATEGORIES } from "../utils/constants";
 import { useVote } from "../hooks/useVote";
-import { useDeleteFact } from "../hooks/useDeleteFact";
+import { useState } from "react";
+import DeleteModal from "../ui/DeleteModal";
 
 function Fact({ fact }) {
   const {
@@ -19,12 +20,11 @@ function Fact({ fact }) {
       votesFalse >= votesInteresting + votesMindblowing) ||
     "";
 
+  // Setting the state for showing the Delete modal window
+  const [showModal, setShowModal] = useState(false);
+
   // Getting the mutation functions and isVoting / isDeleting statuses from custom hooks
   const { isVoting, addVote } = useVote();
-  const { isDeleting, deleteFact } = useDeleteFact();
-
-  // Combining two pending statuses
-  const isBusy = isDeleting || isVoting;
 
   // Vote handler
   function handleVote(e) {
@@ -36,47 +36,59 @@ function Fact({ fact }) {
   }
 
   return (
-    <li className="fact">
-      <p>
-        {isDisputed && <span className="disputed">[⛔ DISPUTED]</span>}
-        {text}
-        <a
-          href={`${source}`}
-          className="source"
-          target="_blank"
-          rel="noreferrer"
+    <>
+      <li className="fact">
+        <p>
+          {isDisputed && <span className="disputed">[⛔ DISPUTED]</span>}
+          {text}
+          <a
+            href={`${source}`}
+            className="source"
+            target="_blank"
+            rel="noreferrer"
+          >
+            (Source)
+          </a>
+        </p>
+        <span
+          className="tag"
+          style={{
+            backgroundColor: CATEGORIES.find(
+              (cat) => cat.name === fact.category
+            ).color,
+          }}
         >
-          (Source)
-        </a>
-      </p>
-      <span
-        className="tag"
-        style={{
-          backgroundColor: CATEGORIES.find((cat) => cat.name === fact.category)
-            .color,
-        }}
-      >
-        {category}
-      </span>
-      <div className="vote-buttons">
-        <button onClick={handleVote} disabled={isBusy} name="votesInteresting">
-          👍 {votesInteresting}
-        </button>
-        <button onClick={handleVote} disabled={isBusy} name="votesMindblowing">
-          🤯 {votesMindblowing}
-        </button>
-        <button onClick={handleVote} disabled={isBusy} name="votesFalse">
-          ⛔ {votesFalse}
-        </button>
-        <button
-          className="btn--small"
-          onClick={() => deleteFact(id)}
-          disabled={isBusy}
-        >
-          X
-        </button>
-      </div>
-    </li>
+          {category}
+        </span>
+        <div className="vote-buttons">
+          <button
+            onClick={handleVote}
+            disabled={isVoting}
+            name="votesInteresting"
+          >
+            👍 {votesInteresting}
+          </button>
+          <button
+            onClick={handleVote}
+            disabled={isVoting}
+            name="votesMindblowing"
+          >
+            🤯 {votesMindblowing}
+          </button>
+          <button onClick={handleVote} disabled={isVoting} name="votesFalse">
+            ⛔ {votesFalse}
+          </button>
+          <button
+            className="btn--small"
+            onClick={() => setShowModal(true)}
+            disabled={isVoting}
+          >
+            X
+          </button>
+        </div>
+      </li>
+      {showModal && <DeleteModal id={id} setShowModal={setShowModal} />}
+    </>
   );
 }
 
