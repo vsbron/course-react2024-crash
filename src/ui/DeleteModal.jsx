@@ -10,7 +10,7 @@ function DeleteModal({ id, setShowModal }) {
 
   return (
     <>
-      <div className="overlay"></div>
+      <div className="overlay" onClick={() => setShowModal(false)}></div>
       <div className="modal">
         <div className="modal__header">Warning!</div>
         <p>
@@ -18,17 +18,23 @@ function DeleteModal({ id, setShowModal }) {
           <br />
           This action cannot be undone.
         </p>
-        <button
-          onClick={() => {
-            setShowModal(false);
-          }}
-          disabled={isDeleting}
-        >
-          Cancel
-        </button>
-        <button onClick={handleDelete} disabled={isDeleting}>
-          Delete
-        </button>
+        <div className="modal__buttons">
+          <button
+            onClick={() => {
+              setShowModal(false);
+            }}
+            disabled={isDeleting}
+          >
+            Cancel
+          </button>
+          <button
+            className="btn--delete"
+            onClick={handleDelete}
+            disabled={isDeleting}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

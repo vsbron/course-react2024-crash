@@ -225,6 +225,63 @@ h1 {
   background: none;
 }
 
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #292524;
+  opacity: 0.6;
+}
+
+.modal {
+  position: fixed;
+  width: 600px;
+  padding: 40px 60px;
+  background: #44403c;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.modal__header {
+  font-size: 40px;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.modal__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0 30px;
+}
+
+.modal__buttons button {
+  border: none;
+  padding: 10px 20px 12px;
+  border-radius: 20px;
+  line-height: 1;
+  font-size: 17px;
+  font-weight: 600;
+  background: #78716c;
+  cursor: pointer;
+  color: inherit;
+  transition: background-color 0.3s ease;
+}
+
+.modal__buttons button.btn--delete {
+  background: #ef4444;
+}
+
+.modal__buttons button:hover {
+  background: #292524;
+}
+
 /* FORM */
 
 .fact-form {
