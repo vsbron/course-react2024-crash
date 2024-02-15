@@ -12,8 +12,10 @@ function Fact({ fact }) {
     votesFalse,
   } = fact;
 
-  // Declaring whether the fact has more false votes than others
-  const isDisputed = votesFalse >= votesInteresting + votesMindblowing;
+  // Declaring whether the fact has more false votes than others (and any of them has at least 1 vote)
+  const isDisputed =
+    (votesInteresting || votesMindblowing || votesFalse) &&
+    votesFalse >= votesInteresting + votesMindblowing;
 
   // Getting the mutation function and isVoting status from custom hook
   const { isVoting, addVote } = useVote();
