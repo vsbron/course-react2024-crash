@@ -15,8 +15,9 @@ function Fact({ fact }) {
 
   // Declaring whether the fact has more false votes than others (and any of them has at least 1 vote)
   const isDisputed =
-    (votesInteresting || votesMindblowing || votesFalse) &&
-    votesFalse >= votesInteresting + votesMindblowing;
+    ((votesInteresting || votesMindblowing || votesFalse) &&
+      votesFalse >= votesInteresting + votesMindblowing) ||
+    "";
 
   // Getting the mutation functions and isVoting / isDeleting statuses from custom hooks
   const { isVoting, addVote } = useVote();
