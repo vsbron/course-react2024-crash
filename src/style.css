@@ -249,6 +249,13 @@ h1 {
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
 }
 
+@media screen and (max-width: 768px) {
+  .modal {
+    width: 500px;
+    padding: 30px 40px;
+  }
+}
+
 .modal__header {
   font-size: 40px;
   color: #ef4444;
@@ -340,5 +347,21 @@ h1 {
   margin-right: 18px;
 }
 
-@media screen and (max-width: 1199px) {
+.loader {
+  width: 75px;
+  height: 75px;
+  border: 10px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  margin: 20px auto 0;
+  animation: loader-rotate 1s linear infinite;
+}
+
+@keyframes loader-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
