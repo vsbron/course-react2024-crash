@@ -1,8 +1,10 @@
 import { useDeleteFact } from "../hooks/useDeleteFact";
 
 function DeleteModal({ id, setShowModal }) {
+  // Getting the mutation function and the status from custom hook
   const { isDeleting, deleteFact } = useDeleteFact();
 
+  // Delete handler function
   function handleDelete() {
     deleteFact(id);
     setShowModal(false);
