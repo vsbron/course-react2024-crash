@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { useAddFact } from "../hooks/useAddFact";
-
 import { CATEGORIES } from "../utils/constants";
 
 function NewFactForm({ setShowForm }) {

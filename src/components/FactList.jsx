@@ -1,6 +1,8 @@
 import { useSearchParams } from "react-router-dom";
+
 import { useFacts } from "../hooks/useFacts";
 import Loader from "../ui/Loader";
+
 import Fact from "./Fact";
 
 function FactList() {

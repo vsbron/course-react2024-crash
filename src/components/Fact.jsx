@@ -1,6 +1,9 @@
-import { CATEGORIES } from "../utils/constants";
-import { useVote } from "../hooks/useVote";
 import { useState } from "react";
+import { createPortal } from "react-dom";
+
+import { useVote } from "../hooks/useVote";
+import { CATEGORIES } from "../utils/constants";
+
 import DeleteModal from "../ui/DeleteModal";
 
 function Fact({ fact }) {
@@ -87,7 +90,8 @@ function Fact({ fact }) {
           </button>
         </div>
       </li>
-      {showModal && <DeleteModal id={id} setShowModal={setShowModal} />}
+      {/* Showing the prompt window using Create Portal function */}
+      {showModal && createPortal(<DeleteModal id={id} setShowModal={setShowModal} />, document.body)}
     </>
   );
 }
