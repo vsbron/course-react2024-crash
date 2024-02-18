@@ -6,6 +6,10 @@ function CategoryFilter() {
   // Getting the reference and setter for URL state
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Getting the chosen category
+  const currentCategory = searchParams.get("category");
+  console.log(currentCategory);
+
   // Category click handler that filters out the facts
   function handleClick(value) {
     // Adding the filter data to the searchParams
@@ -20,7 +24,9 @@ function CategoryFilter() {
       <ul>
         <li>
           <button
-            className="btn btn--all-categories"
+            className={`btn btn--all-categories ${
+              currentCategory === "all" && `active`
+            }`}
             onClick={() => handleClick("all")}
           >
             All
@@ -29,7 +35,9 @@ function CategoryFilter() {
         {CATEGORIES.map((cat) => (
           <li className="category" key={cat.name}>
             <button
-              className="btn btn--category"
+              className={`btn btn--category ${
+                cat.name === currentCategory && `active`
+              }`}
               style={{ backgroundColor: cat.color }}
               onClick={() => handleClick(cat.name)}
             >

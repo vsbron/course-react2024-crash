@@ -203,7 +203,7 @@ h1 {
   text-transform: uppercase;
 
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -223,6 +223,10 @@ h1 {
 .btn--category {
   width: 100%;
   background: none;
+}
+
+.btn.active {
+  font-size: 2.5rem;
 }
 
 .overlay {
