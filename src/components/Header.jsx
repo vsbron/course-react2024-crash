@@ -1,6 +1,25 @@
 import { useState } from "react";
+import styled from "styled-components";
 
 import NewFactForm from "./NewFactForm";
+
+const StyledHeader = styled.header`
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & img {
+    width: 68px;
+    height: 68px;
+  }
+`;
 
 function Header() {
   // Creating state for form visibility
@@ -13,8 +32,8 @@ function Header() {
 
   return (
     <>
-      <header className="header">
-        <div className="logo">
+      <StyledHeader>
+        <Logo>
           <img
             src="logo.png"
             width="68"
@@ -22,11 +41,11 @@ function Header() {
             alt="Today I Learned Logo"
           />
           <h1>Today I Learned</h1>
-        </div>
+        </Logo>
         <button className="btn btn--large" onClick={handleClick}>
           {showForm ? "Close Form" : "Share a fact"}
         </button>
-      </header>
+      </StyledHeader>
 
       {showForm && <NewFactForm setShowForm={setShowForm} />}
     </>

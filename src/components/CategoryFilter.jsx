@@ -1,6 +1,11 @@
 import { useSearchParams } from "react-router-dom";
+import styled from "styled-components";
 
 import { CATEGORIES } from "../utils/constants";
+
+const Category = styled.li`
+  margin-bottom: 16px;
+`;
 
 function CategoryFilter() {
   // Getting the reference and setter for URL state
@@ -33,7 +38,7 @@ function CategoryFilter() {
           </button>
         </li>
         {CATEGORIES.map((cat) => (
-          <li className="category" key={cat.name}>
+          <Category key={cat.name}>
             <button
               className={`btn btn--category ${
                 cat.name === currentCategory && `active`
@@ -43,7 +48,7 @@ function CategoryFilter() {
             >
               {cat.name}
             </button>
-          </li>
+          </Category>
         ))}
       </ul>
     </aside>

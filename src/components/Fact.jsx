@@ -1,10 +1,62 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
+import styled from "styled-components";
 
 import { useVote } from "../hooks/useVote";
-import { CATEGORIES } from "../utils/constants";
+import { CATEGORIES, mediaQuery } from "../utils/constants";
 
 import DeleteModal from "../ui/DeleteModal";
+
+const StyledFact = styled.li`
+  background-color: #44403c;
+
+  padding: 16px 2.4rem;
+  margin-bottom: 16px;
+  border-radius: 16px;
+
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: -1px;
+
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+
+  ${mediaQuery.laptop} {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+`;
+
+const Tag = styled.span`
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: Coiny;
+  padding: 3px 10px 0;
+  border-radius: 10rem;
+`;
+
+const Source = styled.a`
+  &:link,
+  &:visited {
+    color: #a8a29e;
+    text-decoration: none;
+    margin-left: 12px;
+    transition: color 0.3s ease;
+  }
+
+  &:hover,
+  &:active {
+    color: #3b82f6;
+  }
+`;
+
+const DisputedTag = styled.span`
+  color: #ef4444;
+  font-weight: 700;
+  margin-right: 10px;
+`;
 
 function Fact({ fact }) {
   const {
@@ -40,21 +92,15 @@ function Fact({ fact }) {
 
   return (
     <>
-      <li className="fact">
+      <StyledFact>
         <p>
-          {isDisputed && <span className="disputed">[⛔ DISPUTED]</span>}
+          {isDisputed && <DisputedTag>[⛔ DISPUTED]</DisputedTag>}
           {text}
-          <a
-            href={`${source}`}
-            className="source"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <Source href={`${source}`} target="_blank" rel="noreferrer">
             (Source)
-          </a>
+          </Source>
         </p>
-        <span
-          className="tag"
+        <Tag
           style={{
             backgroundColor: CATEGORIES.find(
               (cat) => cat.name === fact.category
@@ -62,7 +108,7 @@ function Fact({ fact }) {
           }}
         >
           {category}
-        </span>
+        </Tag>
         <div className="vote-buttons">
           <button
             onClick={handleVote}
@@ -89,9 +135,13 @@ function Fact({ fact }) {
             X
           </button>
         </div>
-      </li>
+      </StyledFact>
       {/* Showing the prompt window using Create Portal function */}
-      {showModal && createPortal(<DeleteModal id={id} setShowModal={setShowModal} />, document.body)}
+      {showModal &&
+        createPortal(
+          <DeleteModal id={id} setShowModal={setShowModal} />,
+          document.body
+        )}
     </>
   );
 }

@@ -1,7 +1,59 @@
 import { useState } from "react";
+import styled from "styled-components";
 
 import { useAddFact } from "../hooks/useAddFact";
-import { CATEGORIES } from "../utils/constants";
+import { CATEGORIES, mediaQuery } from "../utils/constants";
+
+const StyledForm = styled.form`
+  background-color: #44403c;
+  margin-bottom: 4rem;
+  padding: 16px 3.2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  border-radius: 16px;
+
+  ${mediaQuery.laptop} {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  & input,
+  & select {
+    background: #78716c;
+    color: inherit;
+
+    width: 22rem;
+    padding: 16px;
+    border: none;
+    border-radius: 10rem;
+
+    font-family: inherit;
+    line-height: 1;
+
+    outline: none;
+
+    ${mediaQuery.laptop} {
+      width: auto;
+    }
+  }
+
+  & input:first-child {
+    flex-grow: 1;
+  }
+
+  & input::placeholder {
+    color: #a8a29e;
+  }
+`;
+
+const TextLength = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 18px;
+`;
 
 function NewFactForm({ setShowForm }) {
   // Creating states for controlled form elements and Uploading state
@@ -57,7 +109,7 @@ function NewFactForm({ setShowForm }) {
   }
 
   return (
-    <form className="fact-form" onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Share a fact with the world..."
@@ -66,7 +118,7 @@ function NewFactForm({ setShowForm }) {
         maxLength={maxLength}
         disabled={isAdding}
       />
-      <span>{textLength}</span>
+      <TextLength>{textLength}</TextLength>
 
       <input
         type="text"
@@ -89,7 +141,7 @@ function NewFactForm({ setShowForm }) {
         ))}
       </select>
       <button className="btn btn--large">Post</button>
-    </form>
+    </StyledForm>
   );
 }
 

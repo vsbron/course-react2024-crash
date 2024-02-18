@@ -8,3 +8,9 @@ export const CATEGORIES = [
   { name: "history", color: "#f97316" },
   { name: "news", color: "#8b5cf6" },
 ];
+
+export const mediaQuery = {
+  mobile: `@media screen and (max-width: 768px)`,
+  tablet: `@media screen and (max-width: 991px)`,
+  laptop: `@media screen and (max-width: 1199px)`,
+};

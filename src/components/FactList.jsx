@@ -1,9 +1,18 @@
 import { useSearchParams } from "react-router-dom";
+import styled from "styled-components";
 
 import { useFacts } from "../hooks/useFacts";
 import Loader from "../ui/Loader";
 
 import Fact from "./Fact";
+
+const Message = styled.p`
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 24px;
+`;
 
 function FactList() {
   // Use effect hook that loads the initial facts
@@ -19,9 +28,7 @@ function FactList() {
   // Early return if there's no facts
   if (facts.length === 0)
     return (
-      <p className="message">
-        No facts for this category yet. Create the first one!
-      </p>
+      <Message>No facts for this category yet. Create the first one!</Message>
     );
 
   // Building the message at the bottom. Changes a little depends on how many facts are listed and under what category.
