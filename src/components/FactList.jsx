@@ -36,7 +36,8 @@ function FactList() {
       ? `There are ${facts.length} facts in the `
       : `There is 1 fact in the `) +
     `${
-      searchParams.get("category") !== "all"
+      searchParams.get("category") !== "all" &&
+      searchParams.get("category") !== null
         ? searchParams.get("category") + " category"
         : "database"
     }. Add your own!`;
