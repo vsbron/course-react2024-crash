@@ -123,16 +123,6 @@ function Fact({ fact }) {
           {category}
         </Tag>
 
-        {/* <Tag
-          style={{
-            backgroundColor: CATEGORIES.find(
-              (cat) => cat.name === fact.category
-            ).color,
-          }}
-        >
-          {category}
-        </Tag> */}
-
         <ButtonsWrapper>
           <Button
             onClick={handleVote}

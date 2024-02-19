@@ -72,8 +72,11 @@ const ButtonsWrapper = styled.div`
 function NewFactForm({ setShowModal }) {
   // Creating states for controlled form elements and Uploading state
   const [text, setText] = useState("");
-  const [source, setSource] = useState("https://example.com");
+  const [formSource, setFormSource] = useState("");
   const [category, setCategory] = useState("");
+
+  // Derived state for Source after checking
+  let source = "";
 
   // Getting the mutation function and the Adding state from custom hook
   const { isAdding, addFact } = useAddFact();
@@ -83,20 +86,25 @@ function NewFactForm({ setShowModal }) {
   const textLength = maxLength - text.length;
 
   // Function for validating URL (Not good, needs replacement)
-  function isValidUrl(string) {
-    let url;
-    try {
-      url = new URL(string);
-    } catch (_) {
-      return;
-    }
-    return url.protocol === "http:" || url.protocol === "https:";
+  function ValidationURL(string) {
+    //Check the url
+    const res = string.match(
+      /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g
+    );
+
+    // Guard clause
+    if (res === null) return false;
+
+    // Add https:// if needed
+    source = string.startsWith("http") ? string : `https://${string}`;
+
+    return true;
   }
 
   // Helper function to reset the form
   function resetForm() {
     setText("");
-    setSource("https://example.com");
+    setFormSource("");
     setCategory("");
   }
 
@@ -106,7 +114,7 @@ function NewFactForm({ setShowModal }) {
     e.preventDefault();
 
     // 2) Check if data is valid. If so create a new Fact
-    if (!text || !isValidUrl(source) || !category) return;
+    if (!text || !ValidationURL(formSource) || !category) return;
 
     // 3) Upload the fact to supabase
     addFact(
@@ -140,9 +148,9 @@ function NewFactForm({ setShowModal }) {
         <Label>Source URL:</Label>
         <input
           type="text"
-          placeholder="Trustworthy source..."
-          value={source}
-          onChange={(e) => setSource(e.target.value)}
+          placeholder="https://www.example.com"
+          value={formSource}
+          onChange={(e) => setFormSource(e.target.value)}
           disabled={isAdding}
         />
       </div>
