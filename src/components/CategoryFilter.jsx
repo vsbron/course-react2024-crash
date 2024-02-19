@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { CATEGORIES } from "../utils/constants";
 
+import ButtonColor from "../ui/ButtonColor";
+
 const Category = styled.li`
   margin-bottom: 16px;
 `;
@@ -27,26 +29,24 @@ function CategoryFilter() {
     <aside>
       <ul>
         <li>
-          <button
-            className={`btn btn--all-categories ${
-              currentCategory === "all" && `active`
-            }`}
+          <ButtonColor
+            type="all"
+            active={currentCategory === "all" && "active"}
             onClick={() => handleClick("all")}
           >
             All
-          </button>
+          </ButtonColor>
         </li>
         {CATEGORIES.map((cat) => (
           <Category key={cat.name}>
-            <button
-              className={`btn btn--category ${
-                cat.name === currentCategory && `active`
-              }`}
+            <ButtonColor
+              type="category"
+              active={cat.name === currentCategory && "active"}
               style={{ backgroundColor: cat.color }}
               onClick={() => handleClick(cat.name)}
             >
               {cat.name}
-            </button>
+            </ButtonColor>
           </Category>
         ))}
       </ul>

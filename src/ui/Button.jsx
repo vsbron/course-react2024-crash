@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 
+// Variations of Button sizes
 const sizes = {
   large: css`
     font-size: 20px;
@@ -21,6 +22,7 @@ const sizes = {
   `,
 };
 
+// Variations of Button types
 const types = {
   regular: css`
     background: #78716c;
@@ -31,6 +33,7 @@ const types = {
   `,
 };
 
+// Button css
 const Button = styled.button`
   color: inherit;
   line-height: 1;

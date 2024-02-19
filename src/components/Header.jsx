@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import NewFactForm from "./NewFactForm";
 
+import ButtonColor from "../ui/ButtonColor";
+
 const StyledHeader = styled.header`
   margin-bottom: 4rem;
   display: flex;
@@ -42,9 +44,9 @@ function Header() {
           />
           <h1>Today I Learned</h1>
         </Logo>
-        <button className="btn btn--large" onClick={handleClick}>
+        <ButtonColor size="large" onClick={handleClick}>
           {showForm ? "Close Form" : "Share a fact"}
-        </button>
+        </ButtonColor>
       </StyledHeader>
 
       {showForm && <NewFactForm setShowForm={setShowForm} />}

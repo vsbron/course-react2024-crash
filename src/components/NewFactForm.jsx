@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { useAddFact } from "../hooks/useAddFact";
 import { CATEGORIES, mediaQuery } from "../utils/constants";
 
+import ButtonColor from "../ui/ButtonColor";
+
 const StyledForm = styled.form`
   background-color: #44403c;
   margin-bottom: 4rem;
@@ -140,7 +142,7 @@ function NewFactForm({ setShowForm }) {
           </option>
         ))}
       </select>
-      <button className="btn btn--large">Post</button>
+      <ButtonColor size="large">Post</ButtonColor>
     </StyledForm>
   );
 }

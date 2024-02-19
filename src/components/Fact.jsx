@@ -36,6 +36,8 @@ const Tag = styled.span`
   font-family: Coiny;
   padding: 3px 10px 0;
   border-radius: 10rem;
+
+  ${(props) => CATEGORIES[props.color]}
 `;
 
 const Source = styled.a`
@@ -118,6 +120,17 @@ function Fact({ fact }) {
         >
           {category}
         </Tag>
+
+        {/* <Tag
+          style={{
+            backgroundColor: CATEGORIES.find(
+              (cat) => cat.name === fact.category
+            ).color,
+          }}
+        >
+          {category}
+        </Tag> */}
+
         <ButtonsWrapper>
           <Button
             onClick={handleVote}
