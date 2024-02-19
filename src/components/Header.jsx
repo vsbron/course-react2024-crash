@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 
 import NewFactForm from "./NewFactForm";
 
 import ButtonColor from "../ui/ButtonColor";
+import Modal from "../ui/Modal";
 
 const StyledHeader = styled.header`
   margin-bottom: 4rem;
@@ -25,11 +27,11 @@ const Logo = styled.div`
 
 function Header() {
   // Creating state for form visibility
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Show form click handler
   function handleClick() {
-    setShowForm((show) => !show);
+    setShowModal(true);
   }
 
   return (
@@ -45,11 +47,19 @@ function Header() {
           <h1>Today I Learned</h1>
         </Logo>
         <ButtonColor size="large" onClick={handleClick}>
-          {showForm ? "Close Form" : "Share a fact"}
+          Share a fact
         </ButtonColor>
       </StyledHeader>
 
-      {showForm && <NewFactForm setShowForm={setShowForm} />}
+      {/* Showing the prompt window using Create Portal function */}
+      {showModal &&
+        createPortal(
+          <Modal setShowModal={setShowModal}>
+            <NewFactForm />
+          </Modal>,
+
+          document.body
+        )}
     </>
   );
 }

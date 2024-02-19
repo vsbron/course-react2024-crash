@@ -31,7 +31,7 @@ function CategoryFilter() {
         <li>
           <ButtonColor
             type="all"
-            active={currentCategory === "all" && "active"}
+            active={currentCategory === "all" ? "active" : ""}
             onClick={() => handleClick("all")}
           >
             All
@@ -41,7 +41,7 @@ function CategoryFilter() {
           <Category key={cat.name}>
             <ButtonColor
               type="category"
-              active={cat.name === currentCategory && "active"}
+              active={cat.name === currentCategory ? "active" : ""}
               style={{ backgroundColor: cat.color }}
               onClick={() => handleClick(cat.name)}
             >

@@ -2,44 +2,34 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { useAddFact } from "../hooks/useAddFact";
-import { CATEGORIES, mediaQuery } from "../utils/constants";
+import { CATEGORIES } from "../utils/constants";
 
 import ButtonColor from "../ui/ButtonColor";
+import Button from "../ui/Button";
 
 const StyledForm = styled.form`
-  background-color: #44403c;
-  margin-bottom: 4rem;
-  padding: 16px 3.2rem;
-  text-align: center;
   display: flex;
-  align-items: center;
-  gap: 16px;
-  justify-content: center;
-  border-radius: 16px;
-
-  ${mediaQuery.laptop} {
-    flex-direction: column;
-    align-items: stretch;
-  }
+  flex-direction: column;
+  gap: 15px;
 
   & input,
-  & select {
+  & select,
+  & textarea {
     background: #78716c;
     color: inherit;
-
-    width: 22rem;
-    padding: 16px;
+    width: 100%;
+    padding: 15px;
     border: none;
-    border-radius: 10rem;
-
+    border-radius: 2.4rem;
     font-family: inherit;
     line-height: 1;
-
     outline: none;
+  }
 
-    ${mediaQuery.laptop} {
-      width: auto;
-    }
+  & textarea {
+    height: 100px;
+    resize: none;
+    line-height: 1.4;
   }
 
   & input:first-child {
@@ -51,13 +41,35 @@ const StyledForm = styled.form`
   }
 `;
 
-const TextLength = styled.span`
-  font-size: 18px;
-  font-weight: 600;
-  margin-right: 18px;
+const Header = styled.h2`
+  text-align: center;
 `;
 
-function NewFactForm({ setShowForm }) {
+const Label = styled.label`
+  display: inline-block;
+  margin-left: 1.5rem;
+  margin-bottom: 5px;
+`;
+
+const TextLength = styled.span`
+  display: block;
+  font-size: 14px;
+  text-align: right;
+  margin-right: 1.5rem;
+`;
+
+const ButtonsWrapper = styled.div`
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3rem;
+
+  & > button:first-child {
+    grid-column: 1 / -1;
+  }
+`;
+
+function NewFactForm({ setShowModal }) {
   // Creating states for controlled form elements and Uploading state
   const [text, setText] = useState("");
   const [source, setSource] = useState("https://example.com");
@@ -104,7 +116,7 @@ function NewFactForm({ setShowForm }) {
           // 4) Reset input fields
           resetForm();
           // 5) Close the form
-          setShowForm(false);
+          setShowModal(false);
         },
       }
     );
@@ -112,37 +124,58 @@ function NewFactForm({ setShowForm }) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Share a fact with the world..."
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        maxLength={maxLength}
-        disabled={isAdding}
-      />
-      <TextLength>{textLength}</TextLength>
+      <Header>Add a new fact</Header>
+      <div>
+        <textarea
+          placeholder="Type here..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          maxLength={maxLength}
+          disabled={isAdding}
+        />
+        <TextLength>Characters left: {textLength}</TextLength>
+      </div>
 
-      <input
-        type="text"
-        placeholder="Trustworthy source..."
-        value={source}
-        onChange={(e) => setSource(e.target.value)}
-        disabled={isAdding}
-      />
+      <div>
+        <Label>Source URL:</Label>
+        <input
+          type="text"
+          placeholder="Trustworthy source..."
+          value={source}
+          onChange={(e) => setSource(e.target.value)}
+          disabled={isAdding}
+        />
+      </div>
 
-      <select
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        disabled={isAdding}
-      >
-        <option value="">Choose category:</option>
-        {CATEGORIES.map((cat) => (
-          <option key={cat.name} value={cat.name}>
-            {cat.name[0].toUpperCase() + cat.name.slice(1)}
-          </option>
-        ))}
-      </select>
-      <ButtonColor size="large">Post</ButtonColor>
+      <div>
+        <Label>Category:</Label>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          disabled={isAdding}
+        >
+          <option value="">Choose category:</option>
+          {CATEGORIES.map((cat) => (
+            <option key={cat.name} value={cat.name}>
+              {cat.name[0].toUpperCase() + cat.name.slice(1)}
+            </option>
+          ))}
+        </select>
+      </div>
+      <ButtonsWrapper>
+        <ButtonColor size="large">Post</ButtonColor>
+        <Button size="large" onClick={resetForm}>
+          Reset
+        </Button>
+        <Button
+          size="large"
+          onClick={() => {
+            setShowModal(false);
+          }}
+        >
+          Cancel
+        </Button>
+      </ButtonsWrapper>
     </StyledForm>
   );
 }

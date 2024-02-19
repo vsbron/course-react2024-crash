@@ -160,6 +160,7 @@ function Fact({ fact }) {
           </Button>
         </ButtonsWrapper>
       </StyledFact>
+
       {/* Showing the prompt window using Create Portal function */}
       {showModal &&
         createPortal(
