@@ -62,43 +62,6 @@ h1 {
   gap: 8px;
 }
 
-.vote-buttons button {
-  background: #78716c;
-  color: inherit;
-
-  padding: 6px 12px;
-  border: none;
-  border-radius: 10rem;
-
-  font-family: inherit;
-  font-size: 18px;
-  font-weight: 600;
-
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.vote-buttons button.btn--small {
-  font-size: 15px;
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  font-weight: 400;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.vote-buttons button:hover {
-  background: #292524;
-}
-
-.vote-buttons button:disabled {
-  background: #44403c;
-  cursor: not-allowed;
-}
-
 .btn {
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
   color: inherit;

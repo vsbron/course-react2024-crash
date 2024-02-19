@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { useDeleteFact } from "../hooks/useDeleteFact";
+import Button from "./Button";
 
 const Overlay = styled.div`
   position: fixed;
@@ -72,21 +73,23 @@ function DeleteModal({ id, setShowModal }) {
           This action cannot be undone.
         </p>
         <ModalButtons>
-          <button
+          <Button
+            size="large"
             onClick={() => {
               setShowModal(false);
             }}
             disabled={isDeleting}
           >
             Cancel
-          </button>
-          <button
-            className="btn--delete"
+          </Button>
+          <Button
+            size="large"
+            type="delete"
             onClick={handleDelete}
             disabled={isDeleting}
           >
             Delete
-          </button>
+          </Button>
         </ModalButtons>
       </Modal>
     </>

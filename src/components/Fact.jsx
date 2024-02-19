@@ -6,6 +6,7 @@ import { useVote } from "../hooks/useVote";
 import { CATEGORIES, mediaQuery } from "../utils/constants";
 
 import DeleteModal from "../ui/DeleteModal";
+import Button from "../ui/Button";
 
 const StyledFact = styled.li`
   background-color: #44403c;
@@ -110,30 +111,30 @@ function Fact({ fact }) {
           {category}
         </Tag>
         <div className="vote-buttons">
-          <button
+          <Button
             onClick={handleVote}
             disabled={isVoting}
             name="votesInteresting"
           >
             👍 {votesInteresting}
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={handleVote}
             disabled={isVoting}
             name="votesMindblowing"
           >
             🤯 {votesMindblowing}
-          </button>
-          <button onClick={handleVote} disabled={isVoting} name="votesFalse">
+          </Button>
+          <Button onClick={handleVote} disabled={isVoting} name="votesFalse">
             ⛔ {votesFalse}
-          </button>
-          <button
-            className="btn--small"
+          </Button>
+          <Button
+            size="small"
             onClick={() => setShowModal(true)}
             disabled={isVoting}
           >
             X
-          </button>
+          </Button>
         </div>
       </StyledFact>
       {/* Showing the prompt window using Create Portal function */}

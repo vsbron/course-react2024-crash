@@ -13,7 +13,6 @@ function CategoryFilter() {
 
   // Getting the chosen category
   const currentCategory = searchParams.get("category");
-  console.log(currentCategory);
 
   // Category click handler that filters out the facts
   function handleClick(value) {

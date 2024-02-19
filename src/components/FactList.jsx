@@ -20,7 +20,6 @@ function FactList() {
 
   // Getting the state from URL
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get("category"));
 
   // If data is still loading, show Loader component
   if (isLoading) return <Loader />;
