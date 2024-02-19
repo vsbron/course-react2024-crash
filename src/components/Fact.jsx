@@ -5,8 +5,10 @@ import styled from "styled-components";
 import { useVote } from "../hooks/useVote";
 import { CATEGORIES, mediaQuery } from "../utils/constants";
 
-import DeleteModal from "../ui/DeleteModal";
+import DeleteModal from "../ui/Modal";
 import Button from "../ui/Button";
+import Modal from "../ui/Modal";
+import DeleteFactPrompt from "./DeleteFactPrompt";
 
 const StyledFact = styled.li`
   background-color: #44403c;
@@ -161,7 +163,10 @@ function Fact({ fact }) {
       {/* Showing the prompt window using Create Portal function */}
       {showModal &&
         createPortal(
-          <DeleteModal id={id} setShowModal={setShowModal} />,
+          <Modal setShowModal={setShowModal}>
+            <DeleteFactPrompt id={id}></DeleteFactPrompt>
+          </Modal>,
+
           document.body
         )}
     </>
