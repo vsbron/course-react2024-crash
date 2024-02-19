@@ -50,6 +50,7 @@ const ModalButtons = styled.div`
   display: flex;
   justify-content: flex-end;
   gap: 0 30px;
+  margin-top: 10px;
 `;
 
 function DeleteModal({ id, setShowModal }) {

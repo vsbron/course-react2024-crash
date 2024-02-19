@@ -59,6 +59,14 @@ const DisputedTag = styled.span`
   margin-right: 10px;
 `;
 
+const ButtonsWrapper = styled.div`
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
 function Fact({ fact }) {
   const {
     id,
@@ -110,7 +118,7 @@ function Fact({ fact }) {
         >
           {category}
         </Tag>
-        <div className="vote-buttons">
+        <ButtonsWrapper>
           <Button
             onClick={handleVote}
             disabled={isVoting}
@@ -135,7 +143,7 @@ function Fact({ fact }) {
           >
             X
           </Button>
-        </div>
+        </ButtonsWrapper>
       </StyledFact>
       {/* Showing the prompt window using Create Portal function */}
       {showModal &&
