@@ -6,7 +6,6 @@ import { mediaQuery } from "../utils/constants";
 const types = {
   all: css`
     width: 100%;
-    margin-bottom: 16px;
   `,
   category: css`
     width: 100%;
@@ -24,8 +23,12 @@ const sizes = {
     padding: 2rem 3.2rem 1.7rem;
   `,
   medium: css`
-    font-size: 17px;
+    font-size: 1.7rem;
     padding: 16px 0 13px;
+
+    ${mediaQuery.mobile} {
+      font-size: 1.5rem;
+    }
   `,
 };
 
@@ -36,6 +39,14 @@ const states = {
 
     ${mediaQuery.laptop} {
       font-size: 2.2rem;
+    }
+
+    ${mediaQuery.tablet} {
+      font-size: 2rem;
+    }
+
+    ${mediaQuery.mobile} {
+      font-size: 1.6rem;
     }
   `,
 };

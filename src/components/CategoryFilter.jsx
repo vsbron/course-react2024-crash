@@ -1,12 +1,43 @@
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
-import { CATEGORIES } from "../utils/constants";
+import { CATEGORIES, mediaQuery } from "../utils/constants";
 
 import ButtonColor from "../ui/ButtonColor";
 
 const Category = styled.li`
   margin-bottom: 16px;
+
+  ${mediaQuery.tablet} {
+    margin-bottom: 0;
+  }
+`;
+
+const FilterTitle = styled.div`
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+
+  ${mediaQuery.laptop} {
+    font-size: 1.8rem;
+  }
+`;
+
+const CategoryList = styled.ul`
+  ${mediaQuery.tablet} {
+    font-size: 1.8rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+
+    & > li:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  ${mediaQuery.mobile} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 function CategoryFilter() {
@@ -27,8 +58,9 @@ function CategoryFilter() {
 
   return (
     <aside>
-      <ul>
-        <li>
+      <FilterTitle>Filter by category:</FilterTitle>
+      <CategoryList>
+        <Category>
           <ButtonColor
             type="all"
             active={currentCategory === "all" ? "active" : ""}
@@ -36,7 +68,7 @@ function CategoryFilter() {
           >
             All
           </ButtonColor>
-        </li>
+        </Category>
         {CATEGORIES.map((cat) => (
           <Category key={cat.name}>
             <ButtonColor
@@ -49,7 +81,7 @@ function CategoryFilter() {
             </ButtonColor>
           </Category>
         ))}
-      </ul>
+      </CategoryList>
     </aside>
   );
 }

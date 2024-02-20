@@ -48,3 +48,9 @@ h1 {
   font-family: Coiny;
   margin-top: 7px;
 }
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}

@@ -31,7 +31,7 @@ const StyledFact = styled.li`
   }
 
   ${mediaQuery.mobile} {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     gap: 1rem;
     grid-template-columns: 1fr;
     padding: 15px 2rem;
@@ -42,7 +42,7 @@ const FactText = styled.p`
   grid-column: 1 / -1;
 
   ${mediaQuery.mobile} {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 `;
 

@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import NewFactForm from "./NewFactForm";
 
+import { mediaQuery } from "../utils/constants";
+
 import ButtonColor from "../ui/ButtonColor";
 import Modal from "../ui/Modal";
 
@@ -12,6 +14,13 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  ${mediaQuery.mobile} {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
 `;
 
 const Logo = styled.div`

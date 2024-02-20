@@ -17,7 +17,7 @@ Small facts app that displays the list of facts in various categories and allows
 - Facts are listed, added and updated using React Query;
 - Facts filtering is written using URL State;
 - CSS is handled by Styled Components;
-- Added responsive support up to 550px;
+- Added responsive support up to 360px;
 
 ## Live version
 
