@@ -25,10 +25,25 @@ const StyledFact = styled.li`
   align-items: center;
   justify-content: flex-start;
   gap: 2rem;
+
+  ${mediaQuery.laptop} {
+    gap: 2rem 1rem;
+  }
+
+  ${mediaQuery.mobile} {
+    font-size: 1.8rem;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    padding: 15px 2rem;
+  }
 `;
 
 const FactText = styled.p`
-  grid-column: span 4;
+  grid-column: 1 / -1;
+
+  ${mediaQuery.mobile} {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Source = styled.a`
@@ -39,6 +54,10 @@ const Source = styled.a`
     margin-right: 10px;
     text-decoration: none;
     transition: color 0.3s ease;
+
+    ${mediaQuery.mobile} {
+      font-size: 18px;
+    }
   }
 
   &:hover,
@@ -54,6 +73,11 @@ const DisputedTag = styled.span`
 
   ${mediaQuery.laptop} {
     font-size: 16px;
+    font-weight: 400;
+  }
+
+  ${mediaQuery.mobile} {
+    font-size: 18px;
     font-weight: 400;
   }
 `;
@@ -74,6 +98,10 @@ const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+
+  ${mediaQuery.mobile} {
+    grid-column: 1 / -1;
+  }
 `;
 
 function Fact({ fact }) {
@@ -125,7 +153,7 @@ function Fact({ fact }) {
           <Source href={`${source}`} target="_blank" rel="noreferrer">
             [Source]
           </Source>
-          {isDisputed && <DisputedTag>[⛔ DISPUTED]</DisputedTag>}
+          {isDisputed && <DisputedTag>[DISPUTED]</DisputedTag>}
         </div>
 
         <ButtonsWrapper>
@@ -134,17 +162,20 @@ function Fact({ fact }) {
             disabled={isVoting}
             name="votesInteresting"
           >
-            👍 {votesInteresting}
+            <span>👍</span>
+            {votesInteresting}
           </Button>
           <Button
             onClick={handleVote}
             disabled={isVoting}
             name="votesMindblowing"
           >
-            🤯 {votesMindblowing}
+            <span>🤯</span>
+            {votesMindblowing}
           </Button>
           <Button onClick={handleVote} disabled={isVoting} name="votesFalse">
-            ⛔ {votesFalse}
+            <span>⛔</span>
+            {votesFalse}
           </Button>
           <Button
             size="small"

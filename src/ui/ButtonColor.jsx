@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { mediaQuery } from "../utils/constants";
+
 // Variations of Button Color types
 const types = {
   all: css`
@@ -31,6 +33,10 @@ const sizes = {
 const states = {
   active: css`
     font-size: 2.5rem;
+
+    ${mediaQuery.laptop} {
+      font-size: 2.2rem;
+    }
   `,
 };
 

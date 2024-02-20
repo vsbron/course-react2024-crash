@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import { mediaQuery } from "../utils/constants";
+
 // Variations of Button sizes
 const sizes = {
   large: css`
@@ -10,6 +12,10 @@ const sizes = {
   medium: css`
     font-size: 18px;
     padding: 6px 12px;
+
+    ${mediaQuery.tablet} {
+      padding: 5px 8px;
+    }
   `,
 
   small: css`
@@ -19,6 +25,10 @@ const sizes = {
     padding: 0;
     font-weight: 400;
     margin-left: 10px;
+
+    ${mediaQuery.tablet} {
+      margin-left: 3px;
+    }
   `,
 };
 
@@ -51,6 +61,10 @@ const Button = styled.button`
   &:disabled {
     background: #44403c;
     cursor: not-allowed;
+  }
+
+  & span {
+    margin-right: 5px;
   }
 
   ${(props) => sizes[props.size]}

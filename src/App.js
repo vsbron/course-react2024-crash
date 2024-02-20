@@ -16,6 +16,11 @@ const StyledMain = styled.main`
   grid-template-columns: 25rem 1fr;
   gap: 4.8rem;
 
+  ${mediaQuery.laptop} {
+    grid-template-columns: 22rem 1fr;
+    gap: 3rem;
+  }
+
   ${mediaQuery.tablet} {
     grid-template-columns: 1fr;
   }
