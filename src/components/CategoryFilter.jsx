@@ -4,12 +4,21 @@ import styled from "styled-components";
 import { CATEGORIES, mediaQuery } from "../utils/constants";
 
 import ButtonColor from "../ui/ButtonColor";
+import { useState } from "react";
 
 const Category = styled.li`
   margin-bottom: 16px;
 
   ${mediaQuery.tablet} {
     margin-bottom: 0;
+  }
+`;
+
+const FiltersWrapper = styled.div`
+  display: none;
+
+  &.active {
+    display: block;
   }
 `;
 
@@ -44,6 +53,9 @@ function CategoryFilter() {
   // Getting the reference and setter for URL state
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // State for showing the filter
+  const [showFilters, setShowFilters] = useState(false);
+
   // Getting the chosen category
   const currentCategory = searchParams.get("category");
 
@@ -58,30 +70,39 @@ function CategoryFilter() {
 
   return (
     <aside>
-      <FilterTitle>Filter by category:</FilterTitle>
-      <CategoryList>
-        <Category>
-          <ButtonColor
-            type="all"
-            active={currentCategory === "all" ? "active" : ""}
-            onClick={() => handleClick("all")}
-          >
-            All
-          </ButtonColor>
-        </Category>
-        {CATEGORIES.map((cat) => (
-          <Category key={cat.name}>
+      <ButtonColor
+        type="filter"
+        size="small"
+        onClick={() => setShowFilters((show) => !show)}
+      >
+        {showFilters ? "Hide Filters" : "Show Filters"}
+      </ButtonColor>
+      <FiltersWrapper className={`${showFilters ? "active" : ""}`}>
+        <FilterTitle>Filter by category:</FilterTitle>
+        <CategoryList>
+          <Category>
             <ButtonColor
-              type="category"
-              active={cat.name === currentCategory ? "active" : ""}
-              style={{ backgroundColor: cat.color }}
-              onClick={() => handleClick(cat.name)}
+              type="all"
+              active={currentCategory === "all" ? "active" : ""}
+              onClick={() => handleClick("all")}
             >
-              {cat.name}
+              All
             </ButtonColor>
           </Category>
-        ))}
-      </CategoryList>
+          {CATEGORIES.map((cat) => (
+            <Category key={cat.name}>
+              <ButtonColor
+                type="category"
+                active={cat.name === currentCategory ? "active" : ""}
+                style={{ backgroundColor: cat.color }}
+                onClick={() => handleClick(cat.name)}
+              >
+                {cat.name}
+              </ButtonColor>
+            </Category>
+          ))}
+        </CategoryList>
+      </FiltersWrapper>
     </aside>
   );
 }

@@ -14,6 +14,14 @@ const types = {
   default: css`
     width: auto;
   `,
+  filter: css`
+    display: none;
+
+    ${mediaQuery.tablet} {
+      display: block;
+      margin: 0 0 10px auto;
+    }
+  `,
 };
 
 // Variations of Button Color sizes
@@ -25,6 +33,14 @@ const sizes = {
   medium: css`
     font-size: 1.7rem;
     padding: 16px 0 13px;
+
+    ${mediaQuery.mobile} {
+      font-size: 1.5rem;
+    }
+  `,
+  small: css`
+    font-size: 1.5rem;
+    padding: 8px 15px 5px;
 
     ${mediaQuery.mobile} {
       font-size: 1.5rem;

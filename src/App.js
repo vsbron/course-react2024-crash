@@ -23,6 +23,7 @@ const StyledMain = styled.main`
 
   ${mediaQuery.tablet} {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 `;
 
