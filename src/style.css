@@ -49,6 +49,12 @@ h1 {
   margin-top: 7px;
 }
 
+@media screen and (max-width: 991px) {
+  h1 {
+    font-size: 3.8rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
   h1 {
     font-size: 3.5rem;

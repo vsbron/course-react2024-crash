@@ -15,10 +15,14 @@ const Category = styled.li`
 `;
 
 const FiltersWrapper = styled.div`
-  display: none;
+  display: block;
 
   &.active {
     display: block;
+  }
+
+  ${mediaQuery.tablet} {
+    display: none;
   }
 `;
 
