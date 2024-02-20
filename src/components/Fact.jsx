@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useVote } from "../hooks/useVote";
 import { CATEGORIES, mediaQuery } from "../utils/constants";
 
-import DeleteModal from "../ui/Modal";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import DeleteFactPrompt from "./DeleteFactPrompt";
@@ -21,33 +20,24 @@ const StyledFact = styled.li`
   line-height: 1.4;
   letter-spacing: -1px;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
   align-items: center;
-  gap: 2.4rem;
-
-  ${mediaQuery.laptop} {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
-  }
+  justify-content: flex-start;
+  gap: 2rem;
 `;
 
-const Tag = styled.span`
-  text-transform: uppercase;
-  font-size: 14px;
-  font-family: Coiny;
-  padding: 3px 10px 0;
-  border-radius: 10rem;
-
-  ${(props) => CATEGORIES[props.color]}
+const FactText = styled.p`
+  grid-column: span 4;
 `;
 
 const Source = styled.a`
   &:link,
   &:visited {
     color: #a8a29e;
+    font-size: 16px;
+    margin-right: 10px;
     text-decoration: none;
-    margin-left: 12px;
     transition: color 0.3s ease;
   }
 
@@ -59,8 +49,23 @@ const Source = styled.a`
 
 const DisputedTag = styled.span`
   color: #ef4444;
-  font-weight: 700;
-  margin-right: 10px;
+  font-weight: 600;
+  font-size: 18px;
+
+  ${mediaQuery.laptop} {
+    font-size: 16px;
+    font-weight: 400;
+  }
+`;
+
+const Tag = styled.span`
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: Coiny;
+  padding: 3px 10px 0;
+  border-radius: 10rem;
+  grid-column: span 2;
+  justify-self: flex-start;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -106,13 +111,7 @@ function Fact({ fact }) {
   return (
     <>
       <StyledFact>
-        <p>
-          {isDisputed && <DisputedTag>[⛔ DISPUTED]</DisputedTag>}
-          {text}
-          <Source href={`${source}`} target="_blank" rel="noreferrer">
-            (Source)
-          </Source>
-        </p>
+        <FactText>{text}</FactText>
         <Tag
           style={{
             backgroundColor: CATEGORIES.find(
@@ -122,6 +121,12 @@ function Fact({ fact }) {
         >
           {category}
         </Tag>
+        <div>
+          <Source href={`${source}`} target="_blank" rel="noreferrer">
+            [Source]
+          </Source>
+          {isDisputed && <DisputedTag>[⛔ DISPUTED]</DisputedTag>}
+        </div>
 
         <ButtonsWrapper>
           <Button

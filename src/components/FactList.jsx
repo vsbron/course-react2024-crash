@@ -14,6 +14,12 @@ const Message = styled.p`
   margin-top: 24px;
 `;
 
+const List = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+`;
+
 function FactList() {
   // Use effect hook that loads the initial facts
   const { isLoading, facts } = useFacts();
