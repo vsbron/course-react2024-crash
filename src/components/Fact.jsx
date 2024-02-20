@@ -31,8 +31,11 @@ const StyledFact = styled.li`
   }
 
   ${mediaQuery.mobile} {
-    font-size: 1.6rem;
     gap: 1rem;
+  }
+
+  ${mediaQuery.small} {
+    font-size: 1.6rem;
     grid-template-columns: 1fr;
     padding: 15px 2rem;
   }
@@ -55,8 +58,8 @@ const Source = styled.a`
     text-decoration: none;
     transition: color 0.3s ease;
 
-    ${mediaQuery.mobile} {
-      font-size: 18px;
+    ${mediaQuery.small} {
+      font-size: 14px;
     }
   }
 
@@ -76,8 +79,8 @@ const DisputedTag = styled.span`
     font-weight: 400;
   }
 
-  ${mediaQuery.mobile} {
-    font-size: 18px;
+  ${mediaQuery.small} {
+    font-size: 14px;
     font-weight: 400;
   }
 `;

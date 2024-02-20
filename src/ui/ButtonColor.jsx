@@ -37,14 +37,14 @@ const sizes = {
     ${mediaQuery.mobile} {
       font-size: 1.5rem;
     }
+
+    ${mediaQuery.small} {
+      font-size: 1.2rem;
+    }
   `,
   small: css`
     font-size: 1.5rem;
     padding: 8px 15px 5px;
-
-    ${mediaQuery.mobile} {
-      font-size: 1.5rem;
-    }
   `,
 };
 
@@ -63,6 +63,10 @@ const states = {
 
     ${mediaQuery.mobile} {
       font-size: 1.6rem;
+    }
+
+    ${mediaQuery.mobile} {
+      font-size: 1.4rem;
     }
   `,
 };

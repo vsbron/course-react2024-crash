@@ -1,13 +1,18 @@
 import styled from "styled-components";
 
 import { useDeleteFact } from "../hooks/useDeleteFact";
+import { mediaQuery } from "../utils/constants";
 
 import Button from "../ui/Button";
 
 const PromptHeader = styled.div`
-  font-size: 40px;
+  font-size: 4rem;
   color: #ef4444;
   font-weight: 600;
+
+  ${mediaQuery.mobile} {
+    font-size: 3rem;
+  }
 `;
 
 const PromptButton = styled.div`

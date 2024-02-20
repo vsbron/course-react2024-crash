@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { useAddFact } from "../hooks/useAddFact";
-import { CATEGORIES } from "../utils/constants";
+import { CATEGORIES, mediaQuery } from "../utils/constants";
 
 import ButtonColor from "../ui/ButtonColor";
 import Button from "../ui/Button";
@@ -10,7 +10,11 @@ import Button from "../ui/Button";
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.5rem;
+
+  ${mediaQuery.mobile} {
+    gap: 1rem;
+  }
 
   & input,
   & select,
@@ -43,6 +47,10 @@ const StyledForm = styled.form`
 
 const Header = styled.h2`
   text-align: center;
+
+  ${mediaQuery.mobile} {
+    font-size: 2rem;
+  }
 `;
 
 const Label = styled.label`
@@ -56,16 +64,25 @@ const TextLength = styled.span`
   font-size: 14px;
   text-align: right;
   margin-right: 1.5rem;
+
+  ${mediaQuery.mobile} {
+    font-size: 12px;
+  }
 `;
 
 const ButtonsWrapper = styled.div`
   display: grid;
-  gap: 20px;
+  gap: 2rem;
   grid-template-columns: 1fr 1fr;
   margin-top: 3rem;
 
   & > button:first-child {
     grid-column: 1 / -1;
+  }
+
+  ${mediaQuery.mobile} {
+    margin-top: 1.5rem;
+    gap: 1.5rem;
   }
 `;
 

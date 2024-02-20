@@ -10,6 +10,7 @@ export const CATEGORIES = [
 ];
 
 export const mediaQuery = {
+  small: `@media screen and (max-width: 500px)`,
   mobile: `@media screen and (max-width: 768px)`,
   tablet: `@media screen and (max-width: 991px)`,
   laptop: `@media screen and (max-width: 1199px)`,

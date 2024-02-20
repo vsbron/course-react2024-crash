@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { mediaQuery } from "../utils/constants";
+
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
@@ -11,7 +13,7 @@ const Overlay = styled.div`
 const StyledModal = styled.div`
   position: fixed;
   width: 600px;
-  padding: 40px 60px;
+  padding: 4rem 6rem;
   background: #44403c;
   top: 50%;
   left: 0;
@@ -32,6 +34,16 @@ const StyledModal = styled.div`
       opacity: 1;
       transform: translateY(-50%);
     }
+  }
+
+  ${mediaQuery.mobile} {
+    width: 400px;
+    padding: 3rem 4rem;
+  }
+
+  ${mediaQuery.small} {
+    width: 320px;
+    padding: 3rem;
   }
 `;
 
