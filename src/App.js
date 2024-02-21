@@ -11,6 +11,24 @@ import Header from "./components/Header";
 
 import "./style.css";
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: 10.5rem calc(100vh - 10.5rem - 9.6rem);
+  overflow: hidden;
+  padding: 4.8rem 6.4rem;
+
+  ${mediaQuery.laptop} {
+    grid-template-rows: 10.5rem calc(100vh - 10.5rem - 6.4rem);
+    padding: 3.2rem 4.8rem;
+  }
+
+  ${mediaQuery.tablet} {
+    display: block;
+    overflow: auto;
+    padding: 3rem;
+  }
+`;
+
 const StyledMain = styled.main`
   display: grid;
   grid-template-columns: 25rem 1fr;
@@ -44,11 +62,13 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
 
       <BrowserRouter>
-        <Header />
-        <StyledMain>
-          <CategoryFilter />
-          <FactList />
-        </StyledMain>
+        <Wrapper>
+          <Header />
+          <StyledMain>
+            <CategoryFilter />
+            <FactList />
+          </StyledMain>
+        </Wrapper>
       </BrowserRouter>
     </QueryClientProvider>
   );

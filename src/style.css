@@ -5,6 +5,7 @@
   --color-white-2: #f8fafc;
   --color-white-3: #e2e8f0;
   --color-white-4: #cbd5e1;
+  --color-gray: #475569;
   --color-black: #0f172a;
 
   --color-blue-1: #3b82f6;
@@ -37,19 +38,6 @@ body {
   font: 400 18px/1.4 Lato, sans-serif;
   background: var(--color-white-2);
   color: var(--color-black);
-  padding: 4.8rem 6.4rem;
-}
-
-@media screen and (max-width: 1199px) {
-  body {
-    padding: 3.2rem 4.8rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  body {
-    padding: 3rem;
-  }
 }
 
 ul {

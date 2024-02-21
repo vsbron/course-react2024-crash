@@ -69,7 +69,7 @@ const MoreLabelsWrapper = styled.div`
 const Source = styled.a`
   &:link,
   &:visited {
-    color: var(--color-brown);
+    color: var(--color-gray);
     margin-right: 10px;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -77,12 +77,12 @@ const Source = styled.a`
 
   &:hover,
   &:active {
-    color: var(--color-blue);
+    color: var(--color-blue-1);
   }
 `;
 
 const DisputedTag = styled.span`
-  color: var(--color-red);
+  color: var(--color-red-1);
 `;
 
 const Tag = styled.span`

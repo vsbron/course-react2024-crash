@@ -7,6 +7,12 @@ import { mediaQuery } from "../utils/constants";
 
 import Fact from "./Fact";
 
+const StyledFactList = styled.div`
+  height: 100%;
+  overflow: scroll;
+  scrollbar-width: 0;
+`;
+
 const Message = styled.p`
   text-align: center;
   text-transform: uppercase;
@@ -56,14 +62,14 @@ function FactList() {
     }. Add your own!`;
 
   return (
-    <section>
+    <StyledFactList>
       <ul>
         {facts.map((fact) => (
           <Fact fact={fact} key={fact.id} />
         ))}
       </ul>
       <TotalMessage>&mdash; {totalMessage}</TotalMessage>
-    </section>
+    </StyledFactList>
   );
 }
 
