@@ -82,7 +82,7 @@ const Source = styled.a`
 `;
 
 const DisputedTag = styled.span`
-  color: var(--color-orange);
+  color: var(--color-red);
 `;
 
 const Tag = styled.span`

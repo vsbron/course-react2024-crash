@@ -39,7 +39,7 @@ const types = {
   `,
 
   delete: css`
-    background: var(--color-orange);
+    background: var(--color-red);
   `,
 };
 

@@ -5,11 +5,12 @@ import { mediaQuery } from "../utils/constants";
 // Variations of Button Color types
 const types = {
   all: css`
+    font-size: 2rem;
     width: 100%;
+    padding: 1.6rem 2.8rem;
   `,
   category: css`
     width: 100%;
-    background: none;
   `,
   default: css`
     width: auto;
@@ -27,23 +28,23 @@ const types = {
 // Variations of Button Color sizes
 const sizes = {
   large: css`
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     padding: 2rem 3.2rem;
   `,
   medium: css`
-    font-size: 2rem;
-    padding: 16px 0;
+    font-size: 1.8rem;
+    padding: 1rem 0;
 
     ${mediaQuery.mobile} {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
 
     ${mediaQuery.small} {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
   `,
   small: css`
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     padding: 8px 15px 5px;
   `,
 };
@@ -52,16 +53,16 @@ const sizes = {
 const states = {
   active: css`
     background-color: var(--color-white-1) !important;
+    color: var(--color-black);
+    border-color: var(--color-black);
   `,
 };
 
 // Button Color css
 const ButtonColor = styled.button`
-  background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
+  background: var(--color-blue-1);
   color: var(--color-white-1);
-  border: none;
-  border-width: 1px;
-  border-style: solid;
+  border: transparent 1px solid;
   border-radius: var(--border-radius-sm);
   line-height: 1;
   text-transform: uppercase;
@@ -74,8 +75,8 @@ const ButtonColor = styled.button`
     box-shadow: 0 0.5em 0.5em -0.4em rgba(0, 0, 0, 0.15);
   }
 
-  ${(props) => types[props.type]}
   ${(props) => sizes[props.size]}
+  ${(props) => types[props.type]}
   ${(props) => states[props.active]}
 `;
 
