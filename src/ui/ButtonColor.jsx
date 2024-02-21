@@ -7,7 +7,7 @@ const types = {
   all: css`
     font-size: 2rem;
     width: 100%;
-    padding: 1.6rem 2.8rem;
+    padding: 1.2rem 2.4rem;
   `,
   category: css`
     width: 100%;
@@ -36,8 +36,8 @@ const sizes = {
     }
   `,
   medium: css`
-    font-size: 1.8rem;
-    padding: 1rem 0;
+    font-size: 1.7rem;
+    padding: 0.75rem 0;
 
     ${mediaQuery.mobile} {
       font-size: 1.5rem;

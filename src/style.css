@@ -40,6 +40,16 @@ body {
   color: var(--color-black);
 }
 
+a:link,
+a:active {
+  transition: color 0.2s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-blue-1);
+}
+
 ul {
   list-style: none;
 }
@@ -53,7 +63,6 @@ ul {
 h1 {
   text-transform: uppercase;
   font: 300 4.2rem/1 Oswald;
-  margin-top: 7px;
 }
 
 @media screen and (max-width: 991px) {

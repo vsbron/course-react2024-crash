@@ -1,16 +1,19 @@
 import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 
+import Fact from "./Fact";
+
 import { useFacts } from "../hooks/useFacts";
-import Loader from "../ui/Loader";
 import { mediaQuery } from "../utils/constants";
 
-import Fact from "./Fact";
+import Loader from "../ui/Loader";
+import Copyright from "./Copyright";
 
 const StyledFactList = styled.div`
   height: 100%;
   overflow: scroll;
   scrollbar-width: 0;
+  grid-row: span 2;
 `;
 
 const Message = styled.p`
@@ -27,8 +30,13 @@ const Message = styled.p`
 const TotalMessage = styled.p`
   text-align: right;
   font-size: 1.6rem;
+  margin: 1.6rem 1.2rem 0 0;
 
-  ${mediaQuery.mobile} {
+  ${mediaQuery.tablet} {
+    margin-right: 0;
+  }
+
+  ${mediaQuery.small} {
     font-size: 1.2rem;
   }
 `;
@@ -69,6 +77,7 @@ function FactList() {
         ))}
       </ul>
       <TotalMessage>&mdash; {totalMessage}</TotalMessage>
+      <Copyright />
     </StyledFactList>
   );
 }
