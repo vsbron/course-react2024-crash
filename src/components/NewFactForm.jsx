@@ -131,7 +131,7 @@ function NewFactForm({ setShowModal }) {
     e.preventDefault();
 
     // 2) Check if data is valid. If so create a new Fact
-    if (!text || !ValidationURL(formSource) || !category) return;
+    if (!text || !ValidationURL(formSource) || !category) {alert("Please check the data you filled in the form"); return};
 
     // 3) Upload the fact to supabase
     addFact(
