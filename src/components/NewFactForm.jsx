@@ -24,7 +24,7 @@ const StyledForm = styled.form`
     width: 100%;
     padding: 15px;
     border: var(--color-white-3) 1px solid;
-    border-radius: var(--border-radius-md);
+    border-radius: var(--border-radius-sm);
     font-family: inherit;
     line-height: 1;
     outline: none;
@@ -134,10 +134,7 @@ function NewFactForm({ setShowModal }) {
     e.preventDefault();
 
     // 2) Check if data is valid. If so create a new Fact
-    if (!text || !ValidationURL(formSource) || !category) {
-      alert("Please check the data you filled in the form");
-      return;
-    }
+    if (!text || !ValidationURL(formSource) || !category) return;
 
     // 3) Upload the fact to supabase
     addFact(
