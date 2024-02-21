@@ -6,7 +6,7 @@ import { mediaQuery } from "../utils/constants";
 const Overlay = styled.div`
   position: fixed;
   inset: 0;
-  background: #292524;
+  background: var(--color-black);
   opacity: 0.6;
 `;
 
@@ -14,14 +14,14 @@ const StyledModal = styled.div`
   position: fixed;
   width: 600px;
   padding: 4rem 6rem;
-  background: #44403c;
+  background: var(--color-white-2);
   top: 50%;
   left: 0;
   right: 0;
   margin: 0 auto;
   opacity: 0;
   transform: translateY(-50%);
-  border-radius: 30px;
+  border-radius: var(--border-radius-md);
   box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1);
   animation: modalAppear 0.2s ease forwards;
 

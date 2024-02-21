@@ -10,11 +10,11 @@ import Modal from "../ui/Modal";
 import DeleteFactPrompt from "./DeleteFactPrompt";
 
 const StyledFact = styled.li`
-  background-color: #44403c;
+  background-color: var(--color-white-2);
 
   padding: 16px 2.4rem;
   margin-bottom: 16px;
-  border-radius: 16px;
+  border-radius: var(--border-radius-md);
 
   font-size: 2rem;
   line-height: 1.4;
@@ -65,12 +65,12 @@ const Source = styled.a`
 
   &:hover,
   &:active {
-    color: #3b82f6;
+    color: var(--color-blue);
   }
 `;
 
 const DisputedTag = styled.span`
-  color: #ef4444;
+  color: var(--color-orange);
   font-weight: 600;
   font-size: 18px;
 
@@ -90,7 +90,8 @@ const Tag = styled.span`
   font-size: 14px;
   font-family: Coiny;
   padding: 3px 10px 0;
-  border-radius: 10rem;
+  color:var(--color-white-1);
+  border-radius: var(--border-radius-sm);
   grid-column: span 2;
   justify-self: flex-start;
 `;

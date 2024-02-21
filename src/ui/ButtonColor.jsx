@@ -74,9 +74,9 @@ const states = {
 // Button Color css
 const ButtonColor = styled.button`
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
-  color: inherit;
+  color: var(--color-white-1);
   border: none;
-  border-radius: 10rem;
+  border-radius: var(--border-radius-md);
   font-family: Coiny;
   line-height: 1;
   text-transform: uppercase;

@@ -35,11 +35,11 @@ const sizes = {
 // Variations of Button types
 const types = {
   regular: css`
-    background: #78716c;
+    background: var(--color-white-1);
   `,
 
   delete: css`
-    background: #ef4444;
+    background: var(--color-orange);
   `,
 };
 
@@ -49,13 +49,13 @@ const Button = styled.button`
   line-height: 1;
   font-weight: 600;
   border: none;
-  border-radius: 10rem;
+  border-radius: var(--border-radius-md);
   font-family: inherit;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background: #292524;
+    background: var(--color-white-3);
   }
 
   &:disabled {
