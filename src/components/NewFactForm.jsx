@@ -23,7 +23,7 @@ const StyledForm = styled.form`
     color: inherit;
     width: 100%;
     padding: 15px;
-    border: none;
+    border: var(--color-white-3) 1px solid;
     border-radius: var(--border-radius-md);
     font-family: inherit;
     line-height: 1;
@@ -47,6 +47,9 @@ const StyledForm = styled.form`
 
 const Header = styled.h2`
   text-align: center;
+  font-family: Oswald;
+  font-size: 4rem;
+  font-weight: 300;
 
   ${mediaQuery.mobile} {
     font-size: 2rem;

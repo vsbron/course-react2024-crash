@@ -6,9 +6,9 @@ import { mediaQuery } from "../utils/constants";
 import Button from "../ui/Button";
 
 const PromptHeader = styled.div`
-  font-size: 4rem;
-  color: #ef4444;
-  font-weight: 600;
+  font-size: 5rem;
+  color: var(--color-orange);
+  font-family: Oswald;
 
   ${mediaQuery.mobile} {
     font-size: 3rem;
@@ -18,14 +18,14 @@ const PromptHeader = styled.div`
 const PromptButton = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 0 30px;
-  margin-top: 10px;
+  gap: 0 3rem;
+  margin-top: 2rem;
 `;
 
 const DeleteFact = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1rem;
 `;
 
 function DeleteFactPrompt({ id, setShowModal }) {

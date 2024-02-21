@@ -16,6 +16,10 @@ const Category = styled.li`
 
 const FiltersWrapper = styled.div`
   display: block;
+  padding: 1rem 2rem;
+  background: var(--color-white-1);
+  border: var(--color-white-3) 1px solid;
+  border-radius: var(--border-radius-md);
 
   &.active {
     display: block;
@@ -27,9 +31,10 @@ const FiltersWrapper = styled.div`
 `;
 
 const FilterTitle = styled.div`
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   margin-bottom: 1rem;
+  font-family: Oswald;
 
   ${mediaQuery.laptop} {
     font-size: 1.8rem;
@@ -38,7 +43,7 @@ const FilterTitle = styled.div`
 
 const CategoryList = styled.ul`
   ${mediaQuery.tablet} {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);

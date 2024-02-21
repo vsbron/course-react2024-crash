@@ -14,7 +14,7 @@ import "./style.css";
 const StyledMain = styled.main`
   display: grid;
   grid-template-columns: 25rem 1fr;
-  gap: 4.8rem;
+  gap: 3rem;
 
   ${mediaQuery.laptop} {
     grid-template-columns: 22rem 1fr;

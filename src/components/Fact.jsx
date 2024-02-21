@@ -10,15 +10,15 @@ import Modal from "../ui/Modal";
 import DeleteFactPrompt from "./DeleteFactPrompt";
 
 const StyledFact = styled.li`
-  background-color: var(--color-white-2);
+  background-color: var(--color-white-1);
 
   padding: 16px 2.4rem;
-  margin-bottom: 16px;
+  margin-bottom: 1.6rem;
+  border: var(--color-white-3) 1px solid;
   border-radius: var(--border-radius-md);
 
   font-size: 2rem;
   line-height: 1.4;
-  letter-spacing: -1px;
 
   display: grid;
   grid-template-columns: auto auto auto 1fr;
@@ -43,24 +43,36 @@ const StyledFact = styled.li`
 
 const FactText = styled.p`
   grid-column: 1 / -1;
+  font-weight: 300;
 
   ${mediaQuery.mobile} {
     margin-bottom: 1rem;
   }
 `;
 
+const MoreLabelsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 400;
+
+  ${mediaQuery.laptop} {
+    font-size: 16px;
+  }
+
+  ${mediaQuery.small} {
+    font-size: 14px;
+  }
+`;
+
 const Source = styled.a`
   &:link,
   &:visited {
-    color: #a8a29e;
-    font-size: 16px;
+    color: var(--color-brown);
     margin-right: 10px;
     text-decoration: none;
     transition: color 0.3s ease;
-
-    ${mediaQuery.small} {
-      font-size: 14px;
-    }
   }
 
   &:hover,
@@ -71,26 +83,14 @@ const Source = styled.a`
 
 const DisputedTag = styled.span`
   color: var(--color-orange);
-  font-weight: 600;
-  font-size: 18px;
-
-  ${mediaQuery.laptop} {
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  ${mediaQuery.small} {
-    font-size: 14px;
-    font-weight: 400;
-  }
 `;
 
 const Tag = styled.span`
   text-transform: uppercase;
-  font-size: 14px;
-  font-family: Coiny;
-  padding: 3px 10px 0;
-  color:var(--color-white-1);
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0.3rem 1rem 0.5rem;
+  color: var(--color-white-1);
   border-radius: var(--border-radius-sm);
   grid-column: span 2;
   justify-self: flex-start;
@@ -153,12 +153,12 @@ function Fact({ fact }) {
         >
           {category}
         </Tag>
-        <div>
+        <MoreLabelsWrapper>
           <Source href={`${source}`} target="_blank" rel="noreferrer">
             [Source]
           </Source>
           {isDisputed && <DisputedTag>[DISPUTED]</DisputedTag>}
-        </div>
+        </MoreLabelsWrapper>
 
         <ButtonsWrapper>
           <Button

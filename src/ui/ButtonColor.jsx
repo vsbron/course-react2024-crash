@@ -76,7 +76,7 @@ const ButtonColor = styled.button`
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
   color: var(--color-white-1);
   border: none;
-  border-radius: var(--border-radius-md);
+  border-radius: var(--border-radius-sm);
   font-family: Coiny;
   line-height: 1;
   text-transform: uppercase;
