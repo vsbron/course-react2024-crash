@@ -103,7 +103,11 @@ function CategoryFilter() {
               <ButtonColor
                 type="category"
                 active={cat.name === currentCategory ? "active" : ""}
-                style={{ backgroundColor: cat.color }}
+                style={{
+                  backgroundColor: cat.bgColor,
+                  color: cat.color,
+                  borderColor: cat.color,
+                }}
                 onClick={() => handleClick(cat.name)}
               >
                 {cat.name}

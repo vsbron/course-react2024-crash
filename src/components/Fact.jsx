@@ -148,7 +148,8 @@ function Fact({ fact }) {
           style={{
             backgroundColor: CATEGORIES.find(
               (cat) => cat.name === fact.category
-            ).color,
+            ).bgColor,
+            color: CATEGORIES.find((cat) => cat.name === fact.category).color,
           }}
         >
           {category}

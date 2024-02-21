@@ -1,12 +1,12 @@
 export const CATEGORIES = [
-  { name: "technology", color: "#3b82f6" },
-  { name: "science", color: "#16a34a" },
-  { name: "finance", color: "#ef4444" },
-  { name: "society", color: "#eab308" },
-  { name: "entertainment", color: "#db2777" },
-  { name: "health", color: "#14b8a6" },
-  { name: "history", color: "#f97316" },
-  { name: "news", color: "#8b5cf6" },
+  { name: "technology", color: "#1d4ed8", bgColor: "#93c5fd" },
+  { name: "science", color: "#047857", bgColor: "#6ee7b7" },
+  { name: "finance", color: "#b91c1c", bgColor: "#fca5a5" },
+  { name: "society", color: "#a16207", bgColor: "#fde047" },
+  { name: "entertainment", color: "#a21caf", bgColor: "#f0abfc" },
+  { name: "health", color: "#0e7490", bgColor: "#67e8f9" },
+  { name: "history", color: "#c2410c", bgColor: "#fdba74" },
+  { name: "news", color: "#7e22ce", bgColor: "#d8b4fe" },
 ];
 
 export const mediaQuery = {

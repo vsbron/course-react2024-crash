@@ -27,12 +27,12 @@ const types = {
 // Variations of Button Color sizes
 const sizes = {
   large: css`
-    font-size: 2rem;
-    padding: 2rem 3.2rem 1.7rem;
+    font-size: 2.5rem;
+    padding: 2rem 3.2rem;
   `,
   medium: css`
-    font-size: 1.7rem;
-    padding: 16px 0 13px;
+    font-size: 2rem;
+    padding: 16px 0;
 
     ${mediaQuery.mobile} {
       font-size: 1.5rem;
@@ -51,23 +51,7 @@ const sizes = {
 // Variations of Button Color states
 const states = {
   active: css`
-    font-size: 2.5rem;
-
-    ${mediaQuery.laptop} {
-      font-size: 2.2rem;
-    }
-
-    ${mediaQuery.tablet} {
-      font-size: 2rem;
-    }
-
-    ${mediaQuery.mobile} {
-      font-size: 1.6rem;
-    }
-
-    ${mediaQuery.mobile} {
-      font-size: 1.4rem;
-    }
+    background-color: var(--color-white-1) !important;
   `,
 };
 
@@ -76,8 +60,9 @@ const ButtonColor = styled.button`
   background-image: linear-gradient(135deg, #3b82f6, #ef4444, #16a34a, #eab308);
   color: var(--color-white-1);
   border: none;
+  border-width: 1px;
+  border-style: solid;
   border-radius: var(--border-radius-sm);
-  font-family: Coiny;
   line-height: 1;
   text-transform: uppercase;
 
@@ -85,7 +70,8 @@ const ButtonColor = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    transform: scale(1.1) rotate(-2deg);
+    transform: translateY(-3px);
+    box-shadow: 0 0.5em 0.5em -0.4em rgba(0, 0, 0, 0.15);
   }
 
   ${(props) => types[props.type]}
