@@ -59,7 +59,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Enabling the DevTools for React Query */}
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
 
       <BrowserRouter>
         <Wrapper>
