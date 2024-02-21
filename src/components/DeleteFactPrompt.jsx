@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 
 const PromptHeader = styled.div`
   font-size: 5rem;
-  color: var(--color-red);
+  color: var(--color-red-1);
   font-family: Oswald;
 
   ${mediaQuery.mobile} {

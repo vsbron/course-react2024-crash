@@ -5,21 +5,27 @@ import { mediaQuery } from "../utils/constants";
 // Variations of Button sizes
 const sizes = {
   large: css`
-    font-size: 20px;
-    padding: 10px 20px 12px;
+    font-size: 2rem;
+    padding: 1.2rem 2rem;
+
+    ${mediaQuery.tablet} {
+      padding: 0.8rem 1.6rem;
+      font-size: 1.8rem;
+    }
   `,
 
   medium: css`
-    font-size: 18px;
+    font-size: 1.8rem;
     padding: 6px 12px;
 
     ${mediaQuery.tablet} {
       padding: 5px 8px;
+      font-size: 1.6rem;
     }
   `,
 
   small: css`
-    font-size: 15px;
+    font-size: 1.5rem;
     width: 20px;
     height: 20px;
     padding: 0;

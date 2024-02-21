@@ -52,25 +52,22 @@ const Header = styled.h2`
   font-weight: 300;
 
   ${mediaQuery.mobile} {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 `;
 
 const Label = styled.label`
   display: inline-block;
   margin-left: 1.5rem;
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
 `;
 
 const TextLength = styled.span`
   display: block;
-  font-size: 14px;
+  font-size: 1.4rem;
   text-align: right;
   margin-right: 1.5rem;
-
-  ${mediaQuery.mobile} {
-    font-size: 12px;
-  }
 `;
 
 const ButtonsWrapper = styled.div`

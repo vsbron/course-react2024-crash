@@ -37,7 +37,7 @@ const FilterTitle = styled.div`
   font-family: Oswald;
 
   ${mediaQuery.laptop} {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
   }
 `;
 

@@ -30,22 +30,26 @@ const sizes = {
   large: css`
     font-size: 2.2rem;
     padding: 2rem 3.2rem;
+
+    ${mediaQuery.mobile} {
+      padding: 1.6rem 2.8rem;
+    }
   `,
   medium: css`
     font-size: 1.8rem;
     padding: 1rem 0;
 
     ${mediaQuery.mobile} {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
     }
 
     ${mediaQuery.small} {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
     }
   `,
   small: css`
     font-size: 1.4rem;
-    padding: 8px 15px 5px;
+    padding: 8px 15px;
   `,
 };
 

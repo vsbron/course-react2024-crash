@@ -3,21 +3,28 @@ import styled from "styled-components";
 
 import { useFacts } from "../hooks/useFacts";
 import Loader from "../ui/Loader";
+import { mediaQuery } from "../utils/constants";
 
 import Fact from "./Fact";
 
 const Message = styled.p`
   text-align: center;
   text-transform: uppercase;
-  font-size: 32px;
-  font-weight: 600;
-  margin-top: 24px;
+  font-size: 3.2rem;
+  margin-top: 2.4rem;
+
+  ${mediaQuery.mobile} {
+    font-size: 2rem;
+  }
 `;
 
-const List = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+const TotalMessage = styled.p`
+  text-align: right;
+  font-size: 1.6rem;
+
+  ${mediaQuery.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 function FactList() {
@@ -55,7 +62,7 @@ function FactList() {
           <Fact fact={fact} key={fact.id} />
         ))}
       </ul>
-      <p>&mdash; {totalMessage}</p>
+      <TotalMessage>&mdash; {totalMessage}</TotalMessage>
     </section>
   );
 }
